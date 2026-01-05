@@ -16,8 +16,8 @@ rules(['password' => ['required', 'string']]);
 $confirmPassword = function () {
     $this->validate();
 
-    if (! Auth::guard('web')->validate([
-        'email' => Auth::user()->email,
+    if (! Auth::guard('admin')->validate([
+        'email' => Auth::admin()->email,
         'password' => $this->password,
     ])) {
         throw ValidationException::withMessages([
@@ -44,7 +44,7 @@ $confirmPassword = function () {
 
             <x-text-input wire:model="password"
                           id="password"
-                          class="block mt-1 w-full"
+                          class="mt-1 block w-full"
                           type="password"
                           name="password"
                           required autocomplete="current-password" />
@@ -52,7 +52,7 @@ $confirmPassword = function () {
             <x-input-error :messages="$errors->get('password')" class="mt-2" />
         </div>
 
-        <div class="flex justify-end mt-4">
+        <div class="mt-4 flex justify-end">
             <x-primary-button>
                 {{ __('Confirm') }}
             </x-primary-button>
