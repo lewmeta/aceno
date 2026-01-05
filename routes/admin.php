@@ -26,6 +26,9 @@ Route::middleware('auth:admin')->prefix('admin')->as('admin.')->group(function (
     Route::get('dashboard', Dashboard::class)
         ->name('dashboard');
 
+    Route::get('admin.profile')
+        ->name('profile');
+
     Route::get('verify-email/{id}/{hash}', VerifyEmailController::class)
         ->middleware(['signed', 'throttle:6,1'])
         ->name('verification.verify');
