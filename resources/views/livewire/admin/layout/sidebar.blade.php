@@ -1,6 +1,6 @@
 <!-- Mobile top bar -->
 <div>
-    <div class="sticky top-0 z-40 border-b border-zinc-200 bg-white lg:hidden dark:border-zinc-800 dark:bg-zinc-800">
+    <div class="sticky top-0 z-40 border-b border-zinc-200 bg-white dark:border-zinc-800 dark:bg-zinc-800 lg:hidden">
         <div class="flex h-12 items-center justify-between px-4">
             <div class="flex items-center gap-2">
                 <svg class="h-6 text-zinc-900 dark:text-white" viewBox="0 0 2895 2895" fill="none"
@@ -47,7 +47,7 @@
                 <span class="text-sm font-bold text-zinc-800 dark:text-zinc-100">Aceno</span>
             </div>
             <button
-                class="shadow-subtle flex size-7 items-center justify-center rounded-md bg-zinc-50 p-0.5 text-center text-xs font-medium text-zinc-600 outline outline-zinc-50 transition-colors duration-500 ease-in-out hover:bg-zinc-200 focus:outline-2 focus:outline-offset-2 focus:outline-zinc-600 dark:bg-zinc-800 dark:text-zinc-100 dark:outline-zinc-800 dark:hover:bg-zinc-700 dark:focus:outline-zinc-700"
+                class="shadow-subtle size-7 flex items-center justify-center rounded-md bg-zinc-50 p-0.5 text-center text-xs font-medium text-zinc-600 outline outline-zinc-50 transition-colors duration-500 ease-in-out hover:bg-zinc-200 focus:outline-2 focus:outline-offset-2 focus:outline-zinc-600 dark:bg-zinc-800 dark:text-zinc-100 dark:outline-zinc-800 dark:hover:bg-zinc-700 dark:focus:outline-zinc-700"
                 x-data="true" @click="$dispatch('sidebar-toggle')" aria-label="Open navigation">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                     stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
@@ -77,26 +77,28 @@
     }" @sidebar-toggle.window="open = true" @keydown.escape.window="open=false"
         class="relative">
         <!-- Overlay for mobile -->
-        <div class="fixed inset-0 z-40 bg-black/40 transition-opacity duration-200 lg:hidden dark:bg-white/10"
+        <div class="fixed inset-0 z-40 bg-black/40 transition-opacity duration-200 dark:bg-white/10 lg:hidden"
             x-show="open" x-transition.opacity @click="open=false" aria-hidden="true"></div>
         <!-- Sidebar panel -->
         <aside
-            class="fixed inset-y-0 left-0 z-50 flex w-72 -translate-x-full transform flex-col bg-white outline outline-zinc-200 transition-transform duration-200 lg:static lg:w-80 lg:translate-x-0 lg:opacity-100 dark:bg-zinc-900 dark:outline-zinc-800"
+            class="fixed inset-y-0 left-0 z-50 flex w-72 -translate-x-full transform flex-col bg-white outline outline-zinc-200 transition-transform duration-200 dark:bg-zinc-900 dark:outline-zinc-800 lg:static lg:w-80 lg:translate-x-0 lg:opacity-100"
             :class="open ? 'translate-x-0' : ''" x-trap.noscroll.inert="open && window.innerWidth < 1024">
             <div class="sticky top-0 z-10 bg-white dark:bg-zinc-900 dark:outline-zinc-800">
                 <!-- Header -->
                 <div
-                    class="flex h-14 shrink-0 items-center justify-between border-b border-zinc-100 px-4 lg:px-5 dark:border-zinc-800">
+                    class="flex h-14 shrink-0 items-center justify-between border-b border-zinc-100 px-4 dark:border-zinc-800 lg:px-5">
                     <div class="flex items-center gap-2">
                         <svg class="h-8 text-zinc-900 dark:text-white" viewBox="0 0 2895 2895" fill="white"
                             xmlns="http://www.w3.org/2000/svg">
                             <path
                                 d="M1936.72 1316.69V1677.28L1700.54 1540.97V1452.99L1537.73 1359.06L1461.65 1315.07V1042.46L1536.29 1085.55L1773.92 1222.76L1936.72 1316.69Z"
-                                stroke="#17181B" stroke-width="18.0294" stroke-linecap="round" stroke-linejoin="round">
+                                stroke="#17181B" stroke-width="18.0294" stroke-linecap="round"
+                                stroke-linejoin="round">
                             </path>
                             <path
                                 d="M988.017 1041.56V1315.79L913.191 1359.06L753.454 1451.19V1537.55L516.003 1674.75V1314.16L675.746 1221.85L911.752 1085.55L988.017 1041.56Z"
-                                stroke="#17181B" stroke-width="18.0294" stroke-linecap="round" stroke-linejoin="round">
+                                stroke="#17181B" stroke-width="18.0294" stroke-linecap="round"
+                                stroke-linejoin="round">
                             </path>
                             <path
                                 d="M2408.73 1044.08L2096.46 1224.38L1936.72 1316.69L1773.92 1222.75L1536.29 1085.55L1461.65 1042.46L1621.57 950.15L1696.21 907.06L1933.65 769.856L2408.73 1044.08Z"
@@ -111,11 +113,13 @@
                                 fill="#17181B" stroke="#17181B" stroke-width="18.0294" stroke-linecap="round"
                                 stroke-linejoin="round"></path>
                             <path d="M2408.73 1044.08V1404.67L1936.72 1677.28V1316.69L2096.46 1224.38L2408.73 1044.08Z"
-                                stroke="#17181B" stroke-width="18.0294" stroke-linecap="round" stroke-linejoin="round">
+                                stroke="#17181B" stroke-width="18.0294" stroke-linecap="round"
+                                stroke-linejoin="round">
                             </path>
                             <path
                                 d="M1700.55 1452.99V1813.58L1228.54 2086.18V1725.59L1388.28 1633.28L1624.47 1496.98L1700.55 1452.99Z"
-                                stroke="#17181B" stroke-width="18.0294" stroke-linecap="round" stroke-linejoin="round">
+                                stroke="#17181B" stroke-width="18.0294" stroke-linecap="round"
+                                stroke-linejoin="round">
                             </path>
                             <path
                                 d="M1700.55 1452.99L1624.47 1496.98L1388.28 1633.28L1228.54 1725.59L1065.74 1631.48L828.288 1494.46L753.468 1451.19L913.207 1359.06L988.031 1315.79L1149.39 1222.75L1224.03 1179.66L1225.48 1178.76L1300.12 1221.85L1461.66 1315.07L1537.75 1359.06L1700.55 1452.99Z"
@@ -123,18 +127,22 @@
                                 stroke-linejoin="round"></path>
                             <path
                                 d="M1228.54 1725.59V2086.18L753.468 1811.77V1451.19L828.288 1494.46L1065.74 1631.48L1228.54 1725.59Z"
-                                stroke="#17181B" stroke-width="18.0294" stroke-linecap="round" stroke-linejoin="round">
+                                stroke="#17181B" stroke-width="18.0294" stroke-linecap="round"
+                                stroke-linejoin="round">
                             </path>
                             <path d="M516.012 1314.16V1674.75L40.9387 1400.34V1039.76L353.21 1220.05L516.012 1314.16Z"
-                                stroke="#17181B" stroke-width="18.0294" stroke-linecap="round" stroke-linejoin="round">
+                                stroke="#17181B" stroke-width="18.0294" stroke-linecap="round"
+                                stroke-linejoin="round">
                             </path>
                             <path
                                 d="M1696.22 632.651V907.059L1621.58 950.149L1461.66 1042.46V1128.64L1300.12 1221.85L1225.47 1178.76L1224.03 1179.66V905.256L1383.95 812.945L1696.22 632.651Z"
-                                stroke="#17181B" stroke-width="18.0294" stroke-linecap="round" stroke-linejoin="round">
+                                stroke="#17181B" stroke-width="18.0294" stroke-linecap="round"
+                                stroke-linejoin="round">
                             </path>
                             <path
                                 d="M1224.03 905.257V1179.66L1149.39 1222.75L988.03 1129.54V1041.56L825.225 947.626L748.96 903.634V631.029L1061.23 811.323L1224.03 905.257Z"
-                                stroke="#17181B" stroke-width="18.0294" stroke-linecap="round" stroke-linejoin="round">
+                                stroke="#17181B" stroke-width="18.0294" stroke-linecap="round"
+                                stroke-linejoin="round">
                             </path>
                         </svg>
                         <div>
@@ -147,10 +155,10 @@
                         </div>
                     </div>
                     <button
-                        class="rounded-md p-2 text-zinc-700 outline outline-zinc-200 lg:hidden dark:text-zinc-200 dark:outline-zinc-700"
+                        class="rounded-md p-2 text-zinc-700 outline outline-zinc-200 dark:text-zinc-200 dark:outline-zinc-700 lg:hidden"
                         @click="open=false" aria-label="Close navigation">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                             class="icon icon-tabler-wave-x">
                             <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                             <path d="M18 6l-12 12"></path>
@@ -164,14 +172,14 @@
                         <span
                             class="absolute inset-y-0 left-0 flex items-center pl-3 text-zinc-500 dark:text-zinc-400"><svg
                                 xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
-                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                                class="icon icon-tabler-arrow-search size-4">
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" class="icon icon-tabler-arrow-search size-4">
                                 <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                                 <path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0"></path>
                                 <path d="M21 21l-6 -6"></path>
                             </svg></span>
                         <input x-model="search" placeholder="Find anything…"
-                            class="block h-9 w-full appearance-none rounded-lg border border-transparent bg-white px-4 py-2 pl-9 pr-3 text-xs text-zinc-700 placeholder-zinc-400 ring-1 ring-zinc-200 duration-300 focus:border-zinc-300 focus:bg-transparent focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 sm:text-sm dark:bg-zinc-800 dark:text-zinc-300 dark:placeholder-zinc-500 dark:ring-zinc-700 dark:focus:border-blue-700" />
+                            class="block h-9 w-full appearance-none rounded-lg border border-transparent bg-white px-4 py-2 pl-9 pr-3 text-xs text-zinc-700 placeholder-zinc-400 ring-1 ring-zinc-200 duration-300 focus:border-zinc-300 focus:bg-transparent focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:bg-zinc-800 dark:text-zinc-300 dark:placeholder-zinc-500 dark:ring-zinc-700 dark:focus:border-blue-700 sm:text-sm" />
                         <!-- Shortcut hint intentionally omitted for demo scope -->
                     </label>
                 </div>
@@ -573,7 +581,7 @@
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
                                 stroke="currentColor" stroke-width="2" stroke-linecap="round"
                                 stroke-linejoin="round"
-                                class="icon icon-tabler-external-link ml-auto size-3 opacity-60">
+                                class="icon icon-tabler-external-link size-3 ml-auto opacity-60">
                                 <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                                 <path d="M12 6h-6a2 2 0 0 0 -2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-6"></path>
                                 <path d="M11 13l9 -9"></path>
@@ -658,7 +666,8 @@
                                             </path>
                                             <path d="M9 12a3 3 0 1 0 6 0a3 3 0 0 0 -6 0"></path>
                                         </svg>
-                                        Account</span>
+                                        Account
+                                    </span>
                                 </a>
                                 <a href="#_"
                                     class="flex h-9 items-center justify-between rounded-md px-2 text-zinc-700 hover:bg-zinc-50 dark:text-zinc-300 dark:hover:bg-white/5">

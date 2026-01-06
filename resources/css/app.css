@@ -1,1 +1,25 @@
 @import "tailwindcss";
+
+/* This tells Tailwind: "Apply dark: utilities if a .dark class is on the html tag" */
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+    /* Custom colors for better accessibility (avoid pure #000) */
+      /* --color-*: initial; */
+    --color-background: var(--color-white);
+    --color-foreground: var(--color-slate-900);
+}
+
+/* Optional: Smooth transition for the background */
+body {
+    @apply transition-colors duration-300;
+}
+
+.dark {
+    --color-background: var(--color-slate-950);
+    --color-foreground: var(--color-slate-100);
+}
+
+[x-cloak] {
+    display: none !important;
+}

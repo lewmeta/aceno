@@ -43,7 +43,6 @@
             </header>
         @endif --}}
 
-
     </div>
 
     @livewireScripts

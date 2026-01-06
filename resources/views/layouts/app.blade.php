@@ -15,11 +15,29 @@
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
 
+    <!-- Prevent FOUC (Flash of unstalyed content) - runs before any rendering -->
+    <script>
+        if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia(
+                '(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+    </script>
+
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+
+    <style>
+        [x-cloak] {
+            display: none !important;
+        }
+    </style>
+
+    @livewireStyles
 </head>
 
-<body class="font-sans antialiased">
+<body class="font-sans antialiased" x-cloak x-data="{darkMode: $persist(false)}" :class="{'dark': darkMode === true }">
     <div class="min-h-screen bg-gray-100 dark:bg-zinc-900">
         {{-- <livewire:layout.navigation /> --}}
 
@@ -37,6 +55,9 @@
             {{ $slot }}
         </main>
     </div>
+
+    @livewireScripts
+    {{-- <!--This tells Livewire "Don't inject your own Alpine; I've already bundled it in my JS file --> --}}
 </body>
 
 </html>

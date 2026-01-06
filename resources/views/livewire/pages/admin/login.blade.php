@@ -72,14 +72,14 @@ $login = function () {
 
 <div
     class="bg-linear-180 mx-auto max-w-md rounded-xl from-zinc-50 to-zinc-100 p-8 shadow outline outline-zinc-100 dark:from-zinc-800 dark:to-zinc-900 dark:outline-zinc-900">
-    <div class="text-center lg:text-balance">
-        <div class="inline-block mb-1 w-fit">
+    <div class="lg:text-balance text-center">
+        <div class="mb-1 inline-block w-fit">
             <img src="/favicon.webp" class="object-contain" alt="">
         </div>
-        <h1 class="text-xl font-semibold tracking-tight text-zinc-900 md:text-2xl lg:text-3xl dark:text-white">
+        <h1 class="text-xl font-semibold tracking-tight text-zinc-900 dark:text-white md:text-2xl lg:text-3xl">
             {{ __("Let's get you in to Aceno") }}
         </h1>
-        <p class="mt-4 text-balance text-base text-zinc-500 dark:text-zinc-400">
+        <p class="text-balance mt-4 text-base text-zinc-500 dark:text-zinc-400">
             {{ __('Welcome back! Fire up that password muscle memory, just like the good old dial-up days.') }}
         </p>
     </div>
@@ -164,7 +164,7 @@ $login = function () {
             {{ __('Sign in with email') }}
         </button>
         <button disabled
-            class="cursor-not-allowed relative flex h-10 w-full select-none items-center justify-center gap-2.5 rounded-md bg-white px-5 text-center text-sm font-medium text-zinc-700 outline outline-zinc-200 transition-colors duration-200 ease-in-out hover:bg-zinc-50 hover:shadow-sm focus-visible:z-10 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-900 dark:bg-zinc-800 dark:text-zinc-100 dark:outline-zinc-600 dark:hover:bg-zinc-700 dark:focus-visible:outline-zinc-400">
+            class="relative flex h-10 w-full cursor-not-allowed select-none items-center justify-center gap-2.5 rounded-md bg-white px-5 text-center text-sm font-medium text-zinc-700 outline outline-zinc-200 transition-colors duration-200 ease-in-out hover:bg-zinc-50 hover:shadow-sm focus-visible:z-10 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-900 dark:bg-zinc-800 dark:text-zinc-100 dark:outline-zinc-600 dark:hover:bg-zinc-700 dark:focus-visible:outline-zinc-400">
             <svg class="size-4" slot="left-icon" viewBox="0 0 256 262" xmlns="http://www.w3.org/2000/svg">
                 <path
                     d="M255.878 133.451c0-10.734-.871-18.567-2.756-26.69H130.55v48.448h71.947c-1.45 12.04-9.283 30.172-26.69 42.356l-.244 1.622 38.755 30.023 2.685.268c24.659-22.774 38.875-56.282 38.875-96.027"
@@ -182,15 +182,7 @@ $login = function () {
             {{ __('Sign in with Google') }}
         </button>
     </form>
-    <div class="flex items-center lg:justify-between lg:flex-row flex-col space-y-1">
-        {{-- <!-- Sign up -->
-        <p class="mt-4 text-xs font-medium text-zinc-500 dark:text-zinc-400">
-            {{ __("Dont' have an account?") }}
-            <a href="{{ route('admin.register') }}" wire:navigate
-                class="font-medium text-blue-500 hover:text-zinc-500 dark:text-blue-400 dark:hover:text-zinc-300">
-                {{ __('Sign up') }}
-            </a>
-        </p> --}}
+    <div class="flex flex-col items-center space-y-1 lg:flex-row lg:justify-between">
 
         <!-- Forgot password -->
         @if (Route::has('password.request'))
