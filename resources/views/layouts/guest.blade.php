@@ -7,7 +7,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ config('app.name', 'Laravel') }}</title>
-    
+
     <!-- Favicon -->
     <link rel="icon" href="/favicon.webp?crop=center&amp;height=32&amp;v=1732673457&amp;width=32" type="image/png">
 
@@ -29,7 +29,7 @@
             </div> --}}
 
         <div
-            class="h-screen w-full overflow-hidden flex items-center justify-center bg-white shadow-md dark:bg-zinc-800">
+            class="min-h-screen w-full overflow-hidden flex items-center justify-center bg-white shadow-md dark:bg-zinc-800">
             {{ $slot }}
         </div>
     </div>

@@ -12,7 +12,7 @@ $logout = function (Logout $logout) {
 
 <header
     class="sticky top-0 hidden w-full border-b border-zinc-200 bg-white lg:block dark:border-zinc-800 dark:bg-zinc-900">
-    <div x-data="{ open: false, user: false, dark: document.documentElement.classList.contains('dark') }" class="mx-auto max-w-screen-xl px-6 md:px-10 lg:px-8">
+    <div x-data="{ open: false, user: false, dark: document.documentElement.classList.contains('dark') }" class="mx-auto max-w-7xl px-6 md:px-10 lg:px-8">
         <div class="flex h-14 items-center justify-between gap-3">
             <a href="#_" class="inline-flex items-center gap-2"><svg class="h-7 text-black dark:text-white"
                     viewBox="0 0 2895 2895" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -170,7 +170,7 @@ $logout = function (Logout $logout) {
                         class="inline-flex h-11 items-center justify-center rounded-md py-2 pl-3 pr-12 text-sm font-medium text-zinc-600 outline outline-zinc-50 transition-colors duration-500 ease-in-out hover:bg-zinc-200 focus:outline-2 focus:outline-offset-2 focus:outline-zinc-600 disabled:pointer-events-none disabled:opacity-50 dark:bg-zinc-800 dark:text-zinc-100 dark:outline-zinc-800 dark:hover:bg-zinc-700 dark:focus:outline-zinc-700">
                         <img src="https://cdn.devdojo.com/images/may2023/adam.jpeg"
                             class="h-8 w-8 rounded-full border border-neutral-200 object-cover" />
-                        <span class="ml-2 flex h-full flex-shrink-0 translate-y-px flex-col items-start leading-none">
+                        <span class="ml-2 flex h-full shrink-0 translate-y-px flex-col items-start leading-none">
                             <span>Adam Wathan</span>
                             <span class="text-xs font-light text-neutral-400">@adamwathan</span>
                         </span>
@@ -190,7 +190,7 @@ $logout = function (Logout $logout) {
                             <div class="px-2 py-1.5 text-sm font-semibold">My Account</div>
                             <div class="-mx-1 my-1 h-px bg-neutral-200"></div>
                             <a href="#_"
-                                class="relative flex cursor-default select-none items-center rounded px-2 py-1.5 text-sm outline-none transition-colors hover:bg-neutral-100 data-[disabled]:pointer-events-none data-[disabled]:opacity-50">
+                                class="relative flex cursor-default select-none items-center rounded px-2 py-1.5 text-sm outline-none transition-colors hover:bg-neutral-100 data-disabled:pointer-events-none data-disabled:opacity-50">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                     viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                                     stroke-linecap="round" stroke-linejoin="round" class="mr-2 h-4 w-4">
@@ -201,7 +201,7 @@ $logout = function (Logout $logout) {
                                 <span class="ml-auto text-xs tracking-widest opacity-60">⇧⌘P</span>
                             </a>
                             <a href="#_"
-                                class="relative flex cursor-default select-none items-center rounded px-2 py-1.5 text-sm outline-none transition-colors hover:bg-neutral-100 data-[disabled]:pointer-events-none data-[disabled]:opacity-50">
+                                class="relative flex cursor-default select-none items-center rounded px-2 py-1.5 text-sm outline-none transition-colors hover:bg-neutral-100 data-disabled:pointer-events-none data-disabled:opacity-50">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                     viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                                     stroke-linecap="round" stroke-linejoin="round" class="mr-2 h-4 w-4">
@@ -211,7 +211,7 @@ $logout = function (Logout $logout) {
                                 <span>Billing</span><span class="ml-auto text-xs tracking-widest opacity-60">⌘B</span>
                             </a>
                             <a href="#_"
-                                class="relative flex cursor-default select-none items-center rounded px-2 py-1.5 text-sm outline-none transition-colors hover:bg-neutral-100 data-[disabled]:pointer-events-none data-[disabled]:opacity-50">
+                                class="relative flex cursor-default select-none items-center rounded px-2 py-1.5 text-sm outline-none transition-colors hover:bg-neutral-100 data-disabled:pointer-events-none data-disabled:opacity-50">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                     viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                                     stroke-linecap="round" stroke-linejoin="round" class="mr-2 h-4 w-4">
@@ -225,7 +225,7 @@ $logout = function (Logout $logout) {
                             </a>
                             <div class="-mx-1 my-1 h-px bg-neutral-200"></div>
                             <div
-                                class="relative flex cursor-default select-none items-center rounded px-2 py-1.5 text-sm outline-none transition-colors hover:bg-neutral-100 data-[disabled]:pointer-events-none data-[disabled]:opacity-50">
+                                class="relative flex cursor-default select-none items-center rounded px-2 py-1.5 text-sm outline-none transition-colors hover:bg-neutral-100 data-disabled:pointer-events-none data-disabled:opacity-50">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                     viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                                     stroke-linecap="round" stroke-linejoin="round" class="mr-2 h-4 w-4">
@@ -238,7 +238,7 @@ $logout = function (Logout $logout) {
                             </div>
                             <div class="group relative">
                                 <div
-                                    class="relative flex cursor-default select-none items-center rounded px-2 py-1.5 text-sm outline-none transition-colors hover:bg-neutral-100 data-[disabled]:pointer-events-none data-[disabled]:opacity-50">
+                                    class="relative flex cursor-default select-none items-center rounded px-2 py-1.5 text-sm outline-none transition-colors hover:bg-neutral-100 data-disabled:pointer-events-none data-disabled:opacity-50">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                         viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                                         stroke-linecap="round" stroke-linejoin="round" class="mr-2 h-4 w-4">
@@ -255,11 +255,11 @@ $logout = function (Logout $logout) {
                                     </svg>
                                 </div>
                                 <div data-submenu
-                                    class="righ-auto invisible absolute -left-[330px] top-0 mr-1 translate-x-full opacity-0 duration-200 ease-out group-hover:visible group-hover:mr-0 group-hover:opacity-100">
+                                    class="righ-auto invisible absolute -left-82.5 top-0 mr-1 translate-x-full opacity-0 duration-200 ease-out group-hover:visible group-hover:mr-0 group-hover:opacity-100">
                                     <div
-                                        class="animate-in slide-in-from-left-1 z-50 w-40 min-w-[8rem] overflow-hidden rounded-md border bg-white p-1 shadow-md">
+                                        class="animate-in slide-in-from-left-1 z-50 w-40 min-w-32 overflow-hidden rounded-md border bg-white p-1 shadow-md">
                                         <div x-on:click="dropdownOpen=false"
-                                            class="relative flex cursor-default select-none items-center rounded px-2 py-1.5 text-sm outline-none hover:bg-neutral-100 data-[disabled]:pointer-events-none data-[disabled]:opacity-50">
+                                            class="relative flex cursor-default select-none items-center rounded px-2 py-1.5 text-sm outline-none hover:bg-neutral-100 data-disabled:pointer-events-none data-disabled:opacity-50">
                                             <svg class="mr-2 h-4 w-4" xmlns="http://www.w3.org/2000/svg"
                                                 viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                                 stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -270,7 +270,7 @@ $logout = function (Logout $logout) {
                                             <span>Email</span>
                                         </div>
                                         <div x-on:click="dropdownOpen=false"
-                                            class="relative flex cursor-default select-none items-center rounded px-2 py-1.5 text-sm outline-none hover:bg-neutral-100 data-[disabled]:pointer-events-none data-[disabled]:opacity-50">
+                                            class="relative flex cursor-default select-none items-center rounded px-2 py-1.5 text-sm outline-none hover:bg-neutral-100 data-disabled:pointer-events-none data-disabled:opacity-50">
                                             <svg class="mr-2 h-4 w-4" xmlns="http://www.w3.org/2000/svg"
                                                 viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                                 stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -281,7 +281,7 @@ $logout = function (Logout $logout) {
                                         </div>
                                         <div class="-mx-1 my-1 h-px bg-neutral-200"></div>
                                         <div x-on:click="dropdownOpen=false"
-                                            class="relative flex cursor-default select-none items-center rounded px-2 py-1.5 text-sm outline-none hover:bg-neutral-100 data-[disabled]:pointer-events-none data-[disabled]:opacity-50">
+                                            class="relative flex cursor-default select-none items-center rounded px-2 py-1.5 text-sm outline-none hover:bg-neutral-100 data-disabled:pointer-events-none data-disabled:opacity-50">
                                             <svg class="mr-2 h-4 w-4" xmlns="http://www.w3.org/2000/svg"
                                                 viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                                 stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -297,7 +297,7 @@ $logout = function (Logout $logout) {
                                 </div>
                             </div>
                             <div
-                                class="relative flex cursor-default select-none items-center rounded px-2 py-1.5 text-sm outline-none transition-colors hover:bg-neutral-100 data-[disabled]:pointer-events-none data-[disabled]:opacity-50">
+                                class="relative flex cursor-default select-none items-center rounded px-2 py-1.5 text-sm outline-none transition-colors hover:bg-neutral-100 data-disabled:pointer-events-none data-disabled:opacity-50">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                     viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                                     stroke-linecap="round" stroke-linejoin="round" class="mr-2 h-4 w-4">
@@ -309,7 +309,7 @@ $logout = function (Logout $logout) {
                             </div>
                             <div class="-mx-1 my-1 h-px bg-neutral-200"></div>
                             <a href="#_"
-                                class="focus:bg-accent focus:text-accent-foreground relative flex cursor-default select-none items-center rounded px-2 py-1.5 text-sm outline-none transition-colors hover:bg-neutral-100 data-[disabled]:pointer-events-none data-[disabled]:opacity-50">
+                                class="focus:bg-accent focus:text-accent-foreground relative flex cursor-default select-none items-center rounded px-2 py-1.5 text-sm outline-none transition-colors hover:bg-neutral-100 data-disabled:pointer-events-none data-disabled:opacity-50">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                     viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                                     stroke-linecap="round" stroke-linejoin="round" class="mr-2 h-4 w-4">
@@ -321,7 +321,7 @@ $logout = function (Logout $logout) {
                                 <span>GitHub</span>
                             </a>
                             <a href="#_"
-                                class="focus:bg-accent focus:text-accent-foreground relative flex cursor-default select-none items-center rounded px-2 py-1.5 text-sm outline-none transition-colors hover:bg-neutral-100 data-[disabled]:pointer-events-none data-[disabled]:opacity-50">
+                                class="focus:bg-accent focus:text-accent-foreground relative flex cursor-default select-none items-center rounded px-2 py-1.5 text-sm outline-none transition-colors hover:bg-neutral-100 data-disabled:pointer-events-none data-disabled:opacity-50">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                     viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                                     stroke-linecap="round" stroke-linejoin="round" class="mr-2 h-4 w-4">
@@ -337,7 +337,7 @@ $logout = function (Logout $logout) {
                             </a>
                             <div class="-mx-1 my-1 h-px bg-neutral-200"></div>
                             <a wire:click="logout"
-                                class="focus:bg-accent focus:text-accent-foreground relative flex cursor-default select-none items-center rounded px-2 py-1.5 text-sm outline-none transition-colors hover:bg-neutral-100 data-[disabled]:pointer-events-none data-[disabled]:opacity-50">
+                                class="focus:bg-accent focus:text-accent-foreground relative flex cursor-default select-none items-center rounded px-2 py-1.5 text-sm outline-none transition-colors hover:bg-neutral-100 data-disabled:pointer-events-none data-disabled:opacity-50">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                     viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                                     stroke-linecap="round" stroke-linejoin="round" class="mr-2 h-4 w-4">

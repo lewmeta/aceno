@@ -81,7 +81,7 @@
             x-show="open" x-transition.opacity @click="open=false" aria-hidden="true"></div>
         <!-- Sidebar panel -->
         <aside
-            class="fixed inset-y-0 left-0 z-50 flex w-72 -translate-x-full transform flex-col bg-white outline outline-1 outline-zinc-200 transition-transform duration-200 lg:static lg:w-80 lg:translate-x-0 lg:opacity-100 dark:bg-zinc-900 dark:outline-zinc-800"
+            class="fixed inset-y-0 left-0 z-50 flex w-72 -translate-x-full transform flex-col bg-white outline outline-zinc-200 transition-transform duration-200 lg:static lg:w-80 lg:translate-x-0 lg:opacity-100 dark:bg-zinc-900 dark:outline-zinc-800"
             :class="open ? 'translate-x-0' : ''" x-trap.noscroll.inert="open && window.innerWidth < 1024">
             <div class="sticky top-0 z-10 bg-white dark:bg-zinc-900 dark:outline-zinc-800">
                 <!-- Header -->
@@ -147,7 +147,7 @@
                         </div>
                     </div>
                     <button
-                        class="rounded-md p-2 text-zinc-700 outline outline-1 outline-zinc-200 lg:hidden dark:text-zinc-200 dark:outline-zinc-700"
+                        class="rounded-md p-2 text-zinc-700 outline outline-zinc-200 lg:hidden dark:text-zinc-200 dark:outline-zinc-700"
                         @click="open=false" aria-label="Close navigation">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                             stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
@@ -171,7 +171,7 @@
                                 <path d="M21 21l-6 -6"></path>
                             </svg></span>
                         <input x-model="search" placeholder="Find anything…"
-                            class="block h-10 h-9 w-full appearance-none rounded-lg border border-transparent bg-white px-4 py-2 pl-9 pr-3 text-xs text-zinc-700 placeholder-zinc-400 ring-1 ring-zinc-200 duration-300 focus:border-zinc-300 focus:bg-transparent focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 sm:text-sm dark:bg-zinc-800 dark:text-zinc-300 dark:placeholder-zinc-500 dark:ring-zinc-700 dark:focus:border-blue-700" />
+                            class="block h-9 w-full appearance-none rounded-lg border border-transparent bg-white px-4 py-2 pl-9 pr-3 text-xs text-zinc-700 placeholder-zinc-400 ring-1 ring-zinc-200 duration-300 focus:border-zinc-300 focus:bg-transparent focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 sm:text-sm dark:bg-zinc-800 dark:text-zinc-300 dark:placeholder-zinc-500 dark:ring-zinc-700 dark:focus:border-blue-700" />
                         <!-- Shortcut hint intentionally omitted for demo scope -->
                     </label>
                 </div>
@@ -181,7 +181,7 @@
                 <ul class="space-y-1">
                     <li>
                         <button
-                            class="flex h-9 w-full items-center gap-2 rounded-md px-3 text-sm outline outline-1 outline-transparent hover:bg-zinc-50 dark:hover:bg-white/5"
+                            class="flex h-9 w-full items-center gap-2 rounded-md px-3 text-sm outline outline-transparent hover:bg-zinc-50 dark:hover:bg-white/5"
                             :class="active === 'overview' ?
                                 'bg-white text-zinc-900 dark:bg-white/10 dark:text-white outline-white/10' :
                                 'text-zinc-700 dark:text-zinc-300'"
@@ -199,7 +199,7 @@
                     </li>
                     <li>
                         <button
-                            class="flex h-9 w-full items-center gap-2 rounded-md px-3 text-sm outline outline-1 outline-transparent hover:bg-zinc-50 dark:hover:bg-white/5"
+                            class="flex h-9 w-full items-center gap-2 rounded-md px-3 text-sm outline outline-transparent hover:bg-zinc-50 dark:hover:bg-white/5"
                             :class="active === 'workspace' ?
                                 'bg-white text-zinc-900 dark:bg-white/10 dark:text-white outline-white/10' :
                                 'text-zinc-700 dark:text-zinc-300'"
@@ -278,7 +278,7 @@
                                             </svg>
                                             Drafts</span>
                                         <span
-                                            class="rounded bg-white px-1.5 py-0.5 text-[0.70rem] text-zinc-900 outline outline-1 outline-zinc-200 dark:bg-white/10 dark:text-white dark:outline-white/10">18</span>
+                                            class="rounded bg-white px-1.5 py-0.5 text-[0.70rem] text-zinc-900 outline outline-zinc-200 dark:bg-white/10 dark:text-white dark:outline-white/10">18</span>
                                     </a>
                                 </li>
                                 <li>
@@ -299,7 +299,7 @@
                                             </svg>
                                             Published</span>
                                         <span
-                                            class="rounded bg-white px-1.5 py-0.5 text-[0.70rem] text-zinc-900 outline outline-1 outline-zinc-200 dark:bg-white/10 dark:text-white dark:outline-white/10">64</span>
+                                            class="rounded bg-white px-1.5 py-0.5 text-[0.70rem] text-zinc-900 outline outline-zinc-200 dark:bg-white/10 dark:text-white dark:outline-white/10">64</span>
                                     </a>
                                 </li>
                                 <li>
@@ -320,7 +320,7 @@
                                             </svg>
                                             Archived</span>
                                         <span
-                                            class="rounded bg-white px-1.5 py-0.5 text-[0.70rem] text-zinc-900 outline outline-1 outline-zinc-200 dark:bg-white/10 dark:text-white dark:outline-white/10">7</span>
+                                            class="rounded bg-white px-1.5 py-0.5 text-[0.70rem] text-zinc-900 outline outline-zinc-200 dark:bg-white/10 dark:text-white dark:outline-white/10">7</span>
                                     </a>
                                 </li>
                             </ul>
@@ -447,7 +447,7 @@
                                             </svg>
                                             Members</span>
                                         <span
-                                            class="rounded bg-white px-1.5 py-0.5 text-[0.70rem] text-zinc-900 outline outline-1 outline-zinc-200 dark:bg-white/10 dark:text-white dark:outline-white/10">12</span>
+                                            class="rounded bg-white px-1.5 py-0.5 text-[0.70rem] text-zinc-900 outline outline-zinc-200 dark:bg-white/10 dark:text-white dark:outline-white/10">12</span>
                                     </a>
                                 </li>
                                 <li>
@@ -555,7 +555,7 @@
                             </svg>
                             <span>Help Center</span>
                             <span
-                                class="ml-auto rounded bg-white px-1.5 py-0.5 text-[0.70rem] text-zinc-900 outline outline-1 outline-zinc-200 dark:bg-white/10 dark:text-white dark:outline-white/10">Online</span>
+                                class="ml-auto rounded bg-white px-1.5 py-0.5 text-[0.70rem] text-zinc-900 outline outline-zinc-200 dark:bg-white/10 dark:text-white dark:outline-white/10">Online</span>
                         </a>
                     </li>
                     <li class="mt-2 border-t border-zinc-100 pt-2 dark:border-zinc-800">
@@ -587,7 +587,7 @@
             <div class="sticky bottom-0 z-10 border-t border-zinc-100 bg-white dark:border-zinc-800 dark:bg-zinc-900">
                 <div class="space-y-3 p-3 lg:p-4">
                     <div
-                        class="rounded-xl bg-white p-3 outline outline-1 outline-zinc-200 dark:bg-zinc-900 dark:outline-zinc-800">
+                        class="rounded-xl bg-white p-3 outline outline-zinc-200 dark:bg-zinc-900 dark:outline-zinc-800">
                         <p class="text-xs font-medium text-zinc-700 dark:text-zinc-200">
                             System Status
                         </p>
@@ -596,7 +596,7 @@
                         </p>
                         <div class="mt-2 flex items-center justify-between">
                             <button
-                                class="h-8 rounded-md bg-white px-3 text-xs text-zinc-900 outline outline-1 outline-zinc-200 dark:bg-white/10 dark:text-white dark:outline-white/10">
+                                class="h-8 rounded-md bg-white px-3 text-xs text-zinc-900 outline outline-zinc-200 dark:bg-white/10 dark:text-white dark:outline-white/10">
                                 View dashboard
                             </button>
                             <div class="flex items-center gap-1">
@@ -610,7 +610,7 @@
                 <div class="px-3 pb-3 lg:px-4 lg:pb-4">
                     <div x-data="{ open: false }" class="relative">
                         <button
-                            class="flex w-full items-center justify-between gap-3 rounded-lg p-2 outline outline-1 outline-zinc-200 hover:bg-zinc-50 dark:outline-zinc-700 dark:hover:bg-white/5"
+                            class="flex w-full items-center justify-between gap-3 rounded-lg p-2 outline outline-zinc-200 hover:bg-zinc-50 dark:outline-zinc-700 dark:hover:bg-white/5"
                             @click="open=!open">
                             <span class="flex items-center gap-3">
                                 <img src="https://i.pravatar.cc/40?img=12" alt="Avatar"
@@ -631,7 +631,7 @@
                             </svg>
                         </button>
                         <div x-show="open" x-transition.opacity @click.outside="open=false"
-                            class="absolute bottom-14 left-0 right-0 z-50 overflow-hidden rounded-xl bg-white shadow-xl outline outline-1 outline-zinc-200 dark:bg-zinc-900 dark:outline-zinc-700">
+                            class="absolute bottom-14 left-0 right-0 z-50 overflow-hidden rounded-xl bg-white shadow-xl outline outline-zinc-200 dark:bg-zinc-900 dark:outline-zinc-700">
                             <div class="p-2 text-sm">
                                 <a href="{{ route('admin.profile') }}"
                                     class="flex h-9 items-center justify-between rounded-md px-2 text-zinc-700 hover:bg-zinc-50 dark:text-zinc-300 dark:hover:bg-white/5">
