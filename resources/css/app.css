@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import '../../vendor/livewire/flux/dist/flux.css';
 
 /* This tells Tailwind: "Apply dark: utilities if a .dark class is on the html tag" */
 @custom-variant dark (&:where(.dark, .dark *));

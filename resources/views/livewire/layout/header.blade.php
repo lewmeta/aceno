@@ -162,4 +162,8 @@
 <x-ui.button badge="New" badge-classes="bg-green-500 text-white">
     Features
 </x-ui.button>
+
+<flux:button tooltip="Delete" class="bg-red-500! hover:bg-red-600!">
+    FLux Delete Account
+</flux:button>
 </header>
