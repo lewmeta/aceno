@@ -93,14 +93,20 @@
                     href="#_">
                     Sign in
                 </a>
-                <button
+                {{-- <button
                     class="relative flex h-8 select-none items-center justify-center rounded-md bg-zinc-50 px-3.5 text-center text-xs font-medium text-zinc-600 outline outline-zinc-100 transition-colors duration-200 ease-in-out hover:bg-zinc-200 focus-visible:z-10 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-600 dark:bg-zinc-800 dark:text-zinc-100 dark:outline-zinc-800 dark:hover:bg-zinc-700 dark:focus-visible:outline-zinc-700">
                     Create account
-                </button>
-                <button
+                </button> --}}
+                {{-- @if (!Auth::id())
+                    <x-ui.button size="md" variant="secondary" href="{{ route('register') }}">Sign
+                        in</x-ui.button>
+                    <x-ui.button size="md" variant="primary" href="{{ route('login') }}">Create
+                        account</x-ui.button>
+                @endif --}}
+                {{-- <button
                     class="relative flex h-8 select-none items-center justify-center rounded-md bg-zinc-900 px-3.5 text-center text-xs font-medium text-white outline outline-zinc-900 transition-colors duration-200 ease-in-out hover:bg-zinc-950 focus-visible:z-10 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-950 dark:bg-zinc-100 dark:text-zinc-900 dark:outline-zinc-100 dark:hover:bg-zinc-200 dark:focus-visible:outline-zinc-200">
                     Create account
-                </button>
+                </button> --}}
             </div>
 
             <button @click="darkMode = !darkMode"
@@ -148,4 +154,12 @@
             </button>
         </div>
     </div>
+
+    <x-ui.button badge="3" icon="bell">
+    Notifications
+</x-ui.button>
+
+<x-ui.button badge="New" badge-classes="bg-green-500 text-white">
+    Features
+</x-ui.button>
 </header>
