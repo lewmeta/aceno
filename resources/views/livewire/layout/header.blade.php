@@ -30,8 +30,9 @@
     <!-- Main bar -->
     <div x-data="{ open: false, }" class="mx-auto max-w-7xl px-6 md:px-10 lg:px-16">
         <div class="flex h-14 items-center justify-between gap-3">
-            <a href="#_" class="inline-flex items-center gap-2"><svg class="h-7 text-black dark:text-white"
-                    viewBox="0 0 2895 2895" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <a href="#_" class="inline-flex items-center gap-2">
+                <svg class="h-7 text-black dark:text-white" viewBox="0 0 2895 2895" fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
                     <path
                         d="M1936.72 1316.69V1677.28L1700.54 1540.97V1452.99L1537.73 1359.06L1461.65 1315.07V1042.46L1536.29 1085.55L1773.92 1222.76L1936.72 1316.69Z"
                         stroke="#17181B" stroke-width="18.0294" stroke-linecap="round" stroke-linejoin="round"></path>
@@ -70,7 +71,9 @@
                     <path
                         d="M1224.03 905.257V1179.66L1149.39 1222.75L988.03 1129.54V1041.56L825.225 947.626L748.96 903.634V631.029L1061.23 811.323L1224.03 905.257Z"
                         stroke="#17181B" stroke-width="18.0294" stroke-linecap="round" stroke-linejoin="round"></path>
-                </svg><span class="sr-only">Home</span></a>
+                </svg>
+                <span class="sr-only">Home</span>
+            </a>
             <nav id="nav-05" aria-label="Primary" class="ml-auto hidden items-center gap-4 md:flex">
                 <a class="text-sm font-medium text-zinc-600 hover:text-zinc-900 dark:text-zinc-300 dark:hover:text-white"
                     href="#_">
@@ -100,7 +103,8 @@
                 </button>
             </div>
 
-            <button @click="darkMode = !darkMode" class="size-8 rounded-lg outline outline-zinc-50 transition-colors duration-500 ease-in-out hover:bg-zinc-200 focus:outline-2 focus:outline-offset-2 focus:outline-zinc-600 disabled:pointer-events-none disabled:opacity-50 dark:bg-zinc-800 dark:text-zinc-100 dark:outline-zinc-800 dark:hover:bg-zinc-700 dark:focus:outline-zinc-700">
+            <button @click="darkMode = !darkMode"
+                class="size-8 hidden rounded-lg outline outline-zinc-50 transition-colors duration-500 ease-in-out hover:bg-zinc-200 focus:outline-2 focus:outline-offset-2 focus:outline-zinc-600 disabled:pointer-events-none disabled:opacity-50 dark:bg-zinc-800 dark:text-zinc-100 dark:outline-zinc-800 dark:hover:bg-zinc-700 dark:focus:outline-zinc-700 md:block">
                 <span x-show="!darkMode">🌙</span>
                 <span x-show="darkMode">☀️</span>
             </button>
