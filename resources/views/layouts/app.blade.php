@@ -35,9 +35,11 @@
     </style>
 
     @livewireStyles
+    @fluxAppearance
+
 </head>
 
-<body class="font-sans antialiased" x-cloak x-data="{darkMode: $persist(false)}" :class="{'dark': darkMode === true }">
+<body class="font-sans antialiased" x-cloak x-data="{ darkMode: $persist(false) }" :class="{ 'dark': darkMode === true }">
     <div class="min-h-screen bg-gray-100 dark:bg-zinc-900">
         {{-- <livewire:layout.navigation /> --}}
 
@@ -57,6 +59,7 @@
     </div>
 
     @livewireScripts
+    @fluxScripts
     {{-- <!--This tells Livewire "Don't inject your own Alpine; I've already bundled it in my JS file --> --}}
 </body>
 
