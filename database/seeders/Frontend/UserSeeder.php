@@ -2,6 +2,7 @@
 
 namespace Database\Seeders\Frontend;
 
+use App\Enums\UserType;
 use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -22,6 +23,14 @@ class UserSeeder extends Seeder
             'name' => "Test user",
             'email' => 'user@gmail.com',
             'password' => bcrypt('password'),
+        ]);
+
+        // Vendor seeder;
+        User::create([
+            'name' => 'Vendor user',
+            'email' => 'vendor@gmail.com',
+            'password' => bcrypt('password'),
+            'user_type' => UserType::VENDOR->value,
         ]);
     }
 }
