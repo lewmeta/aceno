@@ -1,6 +1,7 @@
 <?php
 
 use App\Enums\KycStatus;
+use App\Models\User;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -14,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('kycs', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->unique()->constrained()->cascadeOnDelete();
+            $table->foreignIdFor(User::class)->unique()->constrained()->cascadeOnDelete();
 
             /** Status & Verification */
             $table->string('status')->default(KycStatus::PENDING->value)->index();
@@ -42,7 +43,7 @@ return new class extends Migration
             $table->string('selfie_path')->nullable(); // Selfie for verification (like Stripe)
 
             /** Verification Metadata */
-            $table->string('ip_address', 45)->nullable();
+            $table->ipAddress('ip_address')->nullable(); // Modern Laravel 12 helper
             $table->text('user_agent')->nullable()->comment('Browser info');
             $table->json('verification_notes')->nullable()->comment('Admin notes during review');
             $table->unsignedTinyInteger('attempt_number')->default(1);

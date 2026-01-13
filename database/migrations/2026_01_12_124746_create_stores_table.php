@@ -27,7 +27,7 @@ return new class extends Migration
             // Finance (Cents for Precision)
             $table->bigInteger('total_revenue_cents')->default(0);
             $table->char('currency', 3)->default('USD');
-            $table->decimal('commission_rate', 5, 2)->default(10);
+            $table->decimal('commission_rate', 5, 2)->default(10.00);
 
             // Store settings
             $table->boolean('is_active')->default(true)->index();
@@ -37,7 +37,7 @@ return new class extends Migration
             $table->timestamp('vacation_until')->nullable();
 
             /** Verification & Trust badges */
-            $table->boolean('is_verified')->default('false')->index();
+            $table->boolean('is_verified')->default(false)->index();
             $table->timestamp('verified_at')->nullable();
             $table->boolean('is_top_seller')->default(false); // Top seller badge (like eBay)
 
