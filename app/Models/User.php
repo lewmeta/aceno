@@ -107,7 +107,7 @@ class User extends Authenticatable
      * 
      * @return \Illuminate\Database\Eloquent\Relations\HasOne<Kyc>
      */
-    public function Kyc(): HasOne
+    public function kyc(): HasOne
     {
         return $this->hasOne(Kyc::class);
     }
@@ -139,7 +139,7 @@ class User extends Authenticatable
      */
     public function isApprovedVendor(): bool
     {
-        return $this->isVendor() && $this->vandor_status === KycStatus::APPROVED->value;
+        return $this->isVendor() && $this->kyc?->status === KycStatus::APPROVED->value;
     }
 
     /**

@@ -47,7 +47,7 @@
             </div>
             <button
                 class="flex items-center justify-center text-center shadow-subtle font-medium duration-500 ease-in-out transition-colors focus:outline-2 focus:outline-offset-2 text-zinc-600 bg-zinc-50 outline outline-zinc-50 hover:bg-zinc-200 focus:outline-zinc-600 dark:text-zinc-100 dark:bg-zinc-800 dark:outline-zinc-800 dark:hover:bg-zinc-700 dark:focus:outline-zinc-700 size-7 p-0.5 text-xs rounded-md"
-                x-data="true" @click="$dispatch('sb02-toggle')" aria-label="Open navigation">
+                x-data="true" @click="$dispatch('vesibar-toggle')" aria-label="Open navigation">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                     stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                     class="icon icon-tabler-layout-grid size-4" x-data="{ open: false }">
@@ -63,18 +63,18 @@
     </div>
     <!-- Shell -->
     <div x-data="{
-        open: false,
+        open: true,
         active: 'inbox',
         sections: { queues: true, knowledge: false, tools: false },
         search: '',
         filters: { mine: true, unassigned: false, sla: false },
         tags: { billing: true, bug: false, feature: false }
-    }" @sb02-toggle.window="open=true" @keydown.escape.window="open=false" class="relative">
+    }" @vesibar-toggle.window="open = !open" @keydown.escape.window="open=false" class="relative">
         <!-- Overlay -->
         <div class="fixed inset-0 z-40 bg-black/40 dark:bg-white/10 transition-opacity duration-200 lg:hidden"
             x-show="open" x-transition.opacity @click="open=false" aria-hidden="true"></div>
         <!-- Sidebar panel (distinct from 01: narrower + support use case) -->
-        <aside
+        <aside x-show="open"
             class="fixed inset-y-0 left-0 z-50 w-72 lg:w-80 h-dvh lg:h-dvh lg:relative lg:inset-auto lg:left-auto transform transition-transform duration-200 -translate-x-full lg:translate-x-0 bg-white dark:bg-zinc-900 outline outline-zinc-200 dark:outline-zinc-800 flex flex-col overflow-hidden"
             :class="open ? 'translate-x-0' : ''">
             <!-- Header -->
