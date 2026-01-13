@@ -23,7 +23,7 @@ return new class extends Migration
             $table->string('password');
 
             // Branding
-            $table->string('avatar_path')->default('defaults/avatar.png');
+            $table->string('avatar_path');
 
             // Logic & Security
             $table->string('user_type')->default(UserType::CUSTOMER->value)->index();
@@ -31,8 +31,8 @@ return new class extends Migration
 
             // Localization
             $table->string('timezone')->default('UTC');
-            $table->char('currency', 3)->default('USD');
-            $table->string('language', 5)->default('en');
+            $table->char('preferred_currency', 3)->default('USD');
+            $table->string('preferred_language', 5)->default('en');
 
             $table->rememberToken();
             $table->timestamps();
