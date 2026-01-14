@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use App\Enums\UserType;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -57,6 +58,19 @@ class RedirectIfAuthenticated
         }
 
         if ($guard == 'web' || $guard == null) {
+            $user = auth('web')->user();
+
+            // Check if user is not yet resolved
+            if (!$user) {
+                return route('login');
+            }
+
+            // Redirect based on the UserType enum value
+            return match ($user->user_type) {
+                UserType::VENDOR->value => route('vendor.dashboard'),
+                UserType::CUSTOMER->value => route('dashboard'),
+            };
+
             return route('dashboard');
         }
 

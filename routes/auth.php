@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\VerifyEmailController;
+use App\Livewire\Vendor\Dashboard;
 use Illuminate\Support\Facades\Route;
 use Livewire\Volt\Volt;
 
@@ -9,6 +10,8 @@ Route::middleware('guest')->group(function () {
         ->name('register');
 
     Volt::route('login', 'pages.auth.login')
+        ->name('login');
+    Volt::route('vendor/login', 'pages.auth.vendor-login')
         ->name('login');
 
     Volt::route('forgot-password', 'pages.auth.forgot-password')
@@ -25,7 +28,8 @@ Route::middleware('auth')->group(function () {
     Route::get('verify-email/{id}/{hash}', VerifyEmailController::class)
         ->middleware(['signed', 'throttle:6,1'])
         ->name('verification.verify');
-
+        
     Volt::route('confirm-password', 'pages.auth.confirm-password')
         ->name('password.confirm');
+
 });

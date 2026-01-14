@@ -1,0 +1,3 @@
+<div>
+    Vendor dashboard
+</div>

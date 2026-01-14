@@ -17,9 +17,20 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->string('avatar')->nullable();
+            $table->string('avatar_path')->nullable();
+
+            // Admin Access Control
+            $table->boolean('is_super_admin')->default(false);
+            $table->timestamp('last_login_at')->nullable();
+
+            // Localization
+            $table->string('timezone')->default('UTC');
+            $table->char('preferred_currency', 3)->default('USD');
+            $table->string('preferred_language', 5)->default('en');
+
             $table->rememberToken();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
