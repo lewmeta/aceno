@@ -6,6 +6,7 @@ namespace App\Enums;
 
 enum KycStatus: string
 {
+    case DRAFT = 'draft';
     case PENDING = 'pending';
     case UNDER_REVIEW = 'under_review';
     case APPROVED = 'approved';
@@ -19,6 +20,7 @@ enum KycStatus: string
     public function label(): string
     {
         return match ($this) {
+            self::DRAFT => 'draft',
             self::PENDING => 'Pending Submission',
             self::UNDER_REVIEW => 'Under Review',
             self::APPROVED => 'Approved',

@@ -65,13 +65,11 @@ class RedirectIfAuthenticated
                 return route('login');
             }
 
-            dd($user->user_type);
-
-            // // Redirect based on the UserType enum value
-            // return match ($user->user_type) {
-            //     UserType::VENDOR->value => route('vendor.dashboard'),
-            //     UserType::CUSTOMER->value => route('dashboard'),
-            // };
+            // Redirect based on the UserType enum value
+            return match ($user->user_type) {
+                UserType::VENDOR->value => route('vendor.dashboard'),
+                UserType::CUSTOMER->value => route('dashboard'),
+            };
 
             return route('dashboard');
         }
