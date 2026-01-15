@@ -1,7 +1,4 @@
 <div class="min-h-screen flex items-center justify-center pt-10">
-    <!--
-// Make sure to change  "open: false",  to  open: true. On the z-data="{}".
--->
     <div class="w-full max-w-3xl" x-data="{
         open: true,
         drag: false,

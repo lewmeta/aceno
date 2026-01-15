@@ -2,7 +2,9 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Attributes\Scope;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -16,6 +18,7 @@ class Admin extends Authenticatable
 
     protected $table = 'admins';
 
+
     /**
      * The attributes that are mass assignable.
      *
@@ -26,8 +29,9 @@ class Admin extends Authenticatable
         'email',
         'password',
         'avatar_path',
-        'is_super_admin',
-        'last_login_at',
+        'timesomze',
+        'preferred_currency',
+        'preferred_language',
     ];
 
     /**
@@ -76,6 +80,16 @@ class Admin extends Authenticatable
     }
 
     /**
+     * Record admin login timestamp
+     * 
+     * @return void
+     */
+    public function recordLogin(): void
+    {
+        $this->update(['last_login_at' => now()]);
+    }
+
+    /**
      * Get the admin's full avatar URL
      * 
      * @return string
@@ -88,14 +102,37 @@ class Admin extends Authenticatable
     }
 
     /**
+     * Get the admin's full avatar url with fallback
+     * 
+     * @return Attribute
+     */
+    protected function avatarUrl(): Attribute
+    {
+        return Attribute::make(
+            get: fn () => $this->avatar_path
+            ? asset("storage/{$this->avatar_path}")
+            : 'https://ui-avatars.com/api/?name=' . urlencode($this->name) . "&background=ef4444&color=fff",
+        );
+    }
+
+    /**
      * Scope query to only super admins
      * 
      * @param \Illuminate\Database\Eloquent\Builder<Admin> $query
      * @param \Illuminate\Database\Eloquent\Builder<Admin>
      */
     #[Scope]
-    public function superAdmins($query)
+    protected function superAdmins(Builder $query): void
     {
-        return $query->where('is_super_admin', true);
+        $query->where('is_super_admin', true);
+    }
+
+    /**
+     * Scope: Regular admins (not super)
+     */
+    #[Scope]
+    protected function regularAdmins(Builder $query): Builder
+    {
+        return $query->where('is_super_admin', false);
     }
 }

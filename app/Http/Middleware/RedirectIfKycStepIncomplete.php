@@ -22,16 +22,10 @@ class RedirectIfKycStepIncomplete
         $user = $request->user();
         $kyc = $user->kyc;
 
-        // Route names;
-        // Step 1: vendor.kyc.create
-        // Step 2: vendor.kyc.step2
-        // Step 3: vendor.kyc.step3
-
         // Rule: To access Step 2, Step 1 must be finished (full_name exists)
         if ($request->routeIs('vendor.kyc.step2')) {
             if (!$kyc || empty($kyc->full_name)) {
                 return redirect()->route('vendor.kyc.create')->with('error', 'Complete step 1 first');
-                // return redirect()->route('vendor.kyc.create');
             }
         }
 
@@ -44,7 +38,7 @@ class RedirectIfKycStepIncomplete
 
         // Rule: If KYC is already PENDING/APPROVED, don't let them back into the wizard
         if ($request->routeIs('vendor.kyc.create', 'vendor.kyc.step2', 'vendor.kyc.step3')) {
-            if ($kyc && $kyc->status !== KycStatus::DRAFT) {
+            if ($kyc && $kyc->status !== KycStatus::DRAFT->value) {
                 return redirect()->route('vendor.kyc.pending');
             }
         }

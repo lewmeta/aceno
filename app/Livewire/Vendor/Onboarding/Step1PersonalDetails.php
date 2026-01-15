@@ -6,12 +6,12 @@ namespace App\Livewire\Vendor\Onboarding;
 
 use App\Enums\KycStatus;
 use App\Livewire\Forms\KycForm;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Log;
 use Livewire\Attributes\Layout;
+use Livewire\Attributes\Title;
 use Livewire\Component;
 
 #[Layout('layouts.vendor')]
+#[Title('KYC Verification - Step 1')]
 class Step1PersonalDetails extends Component
 {
     /**
@@ -41,11 +41,6 @@ class Step1PersonalDetails extends Component
      */
     public function saveAndContinue(): mixed
     {
-        // dd(['Mapped data:']);
-        Log::debug("Clicked next step!");
-        // Execute Step 1 specific validation
-        // $this->validate($this->form->step1Rules());
-
         // Call validate directly on the form object
         $this->form->validate($this->form->step1Rules());
 
@@ -56,11 +51,19 @@ class Step1PersonalDetails extends Component
         $user->kyc()->updateOrCreate(
             ['user_id' => $user->id],
             array_merge($this->form->getMappedData(), [
-                'status' => KycStatus::PENDING->value,
+                'status' => KycStatus::DRAFT->value,
             ]),
         );
 
         return redirect()->route('vendor.kyc.step2');
+    }
+
+    /**
+     * Go back
+     */
+    public function goBack(): void
+    {
+        $this->redirectRoute('home', navigate: true);
     }
 
     public function render()
