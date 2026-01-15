@@ -69,8 +69,8 @@
                             <div>
                                 <label class="block text-xs font-medium text-zinc-700 dark:text-zinc-200">Date of
                                     Birth*</label>
-                                <input type="date" wire:model='form.date_of_birth' {{-- x-model="form.website"  --}}
-                                    type="text" placeholder="19/03/9999"
+                                <input type="date" wire:model='form.date_of_birth'
+                                    type="text"
                                     class="mt-1 block w-full h-10 px-4 py-2 text-xs bg-white border border-transparent rounded-lg appearance-none dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 duration-300 ring-1 ring-zinc-200 dark:ring-zinc-700 placeholder-zinc-400 dark:placeholder-zinc-500 focus:border-zinc-300 dark:focus:border-blue-700 focus:bg-transparent focus:outline-none focus:ring-blue-500 focus:ring-offset-2 focus:ring-2 sm:text-sm" />
 
                                 <!-- Error message display -->
@@ -161,7 +161,7 @@
                                     class="block text-xs font-medium text-zinc-700 dark:text-zinc-200">Gender*</label>
                                 <select wire:model="form.gender"
                                     class="mt-1 block w-full h-10 px-4 py-2 text-xs bg-white border border-transparent rounded-lg appearance-none dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 duration-300 ring-1 ring-zinc-200 dark:ring-zinc-700 placeholder-zinc-400 dark:placeholder-zinc-500 focus:border-zinc-300 dark:focus:border-blue-700 focus:bg-transparent focus:outline-none focus:ring-blue-500 focus:ring-offset-2 focus:ring-2 sm:text-sm">
-                                    <option>Select Gender</option>
+                                    <option value="">Select Gender</option>
                                     @foreach (\App\Enums\Gender::cases() as $gender)
                                         <option wire:key="{{ $gender->value }}" value="{{ $gender->value }}">
                                             {{ $gender->label() }}</option>
@@ -175,7 +175,7 @@
                             <!-- Nationality -->
                             <div>
                                 <label
-                                    class="block text-xs font-medium text-zinc-700 dark:text-zinc-200">Nationality*</label>
+                                    class="block text-xs font-medium text-zinc-700 dark:text-zinc-200">Nationality (ISO 3-Letter)*</label>
                                 <input wire:model='form.nationality' type="text" placeholder="e.g. USA"
                                     class="mt-1 block w-full h-10 px-4 py-2 text-xs bg-white border border-transparent rounded-lg appearance-none dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 duration-300 ring-1 ring-zinc-200 dark:ring-zinc-700 placeholder-zinc-400 dark:placeholder-zinc-500 focus:border-zinc-300 dark:focus:border-blue-700 focus:bg-transparent focus:outline-none focus:ring-blue-500 focus:ring-offset-2 focus:ring-2 sm:text-sm" />
 
@@ -243,13 +243,14 @@
                     <div class="px-6 py-4 border-t border-zinc-100 dark:border-zinc-700 flex items-center gap-3">
                         <button
                             class="relative flex items-center  text-center font-medium transition-colors duration-200 ease-in-out select-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:z-10 justify-center rounded-md text-zinc-700 bg-white outline outline-zinc-200 hover:shadow-sm hover:bg-zinc-50 focus-visible:outline-zinc-900 dark:text-zinc-100 dark:bg-zinc-800 dark:outline-zinc-600 dark:hover:bg-zinc-700 dark:focus-visible:outline-zinc-400 h-7 px-3 text-xs"
-                            type="button" @click="close()" :disabled="submitting">
+                            type="button"wire:click="goBack">
                             {{ __('Cancel') }}
                         </button>
                         <div class="ml-auto flex items-center gap-2">
                             <button
                                 class="relative flex items-center text-center font-medium transition-colors duration-200 ease-in-out select-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:z-10 justify-center rounded-md text-zinc-700 bg-white outline outline-zinc-200 hover:shadow-sm hover:bg-zinc-50 focus-visible:outline-zinc-900 dark:text-zinc-100 dark:bg-zinc-800 dark:outline-zinc-600 dark:hover:bg-zinc-700 dark:focus-visible:outline-zinc-400 h-7 px-3 text-xs"
                                 type="button"
+                                wire:click="goBack"
                                  {{-- @click="close()" :disabled="submitting" --}}
                                 >
                                 {{ __('Back') }}

@@ -38,10 +38,29 @@ return [
             'report' => false,
         ],
 
+        /**
+         * Private Disk (Laravel 12 Default)
+         * 
+         * For sensitive files that should NEVER be publicly accessible:
+         * - KYC documents (IDs, passports)
+         * - Invoices
+         * - User contracts
+         * - Medical records
+         * 
+         * Access: Only via authorized controller routes
+         * Location: storage/app/private
+         */
+        'private' => [
+            'driver' => 'local',
+            'root' => storage_path('app/private'),
+            'visibility' => 'private',
+            'throw' => false,
+        ],
+
         'public' => [
             'driver' => 'local',
             'root' => storage_path('app/public'),
-            'url' => env('APP_URL').'/storage',
+            'url' => env('APP_URL') . '/storage',
             'visibility' => 'public',
             'throw' => false,
             'report' => false,

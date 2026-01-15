@@ -23,7 +23,7 @@ return new class extends Migration
             $table->string('password');
 
             // Branding
-            $table->string('avatar_path');
+            $table->string('avatar_path')->nullable();
 
             // Logic & Security
             $table->string('user_type')->default(UserType::CUSTOMER->value)->index();

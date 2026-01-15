@@ -25,6 +25,9 @@ class KycForm extends Form
     public string $state = '';
     public string $postal_code = '';
     public string $country = 'US';
+    public ?string $document_issue_date;
+    public ?string $document_issuing_country = '';
+    public ?string $document_expiry_date = '';
 
     // Documents - Note the explicit type hinting for Livewire uploads
     public string $document_type = '';
@@ -49,11 +52,31 @@ class KycForm extends Form
      */
     public function step2Rules(): array
     {
-        return [
+        $rules = [
             'document_type' => ['required', new Enum(KycDocumentType::class)],
-            'document_front' => 'required|image|mimes:jpg,jpeg,png|max:5120',
-            'document_back' => 'nullable|image|mimes:jpg,jpeg,png|max:5120',
+            'document_front' => 'required|image|mimes:jpg,jpeg,webp,svg,png|max:5120',
+            'document_issue_date' => 'required|date|before:today',
+            'document_issuing_country' => 'required|string|size:3',
+            'document_expiry_date' => 'required|date|after:today',
         ];
+
+        // Access the Enum logic directly
+        $docType = KycDocumentType::tryFrom($this->document_type);
+
+        $rules['document_back'] = ($docType && $docType->requireBackSide())
+            ? 'required|image|mimes:jpg,jpeg,png,svg,webp|max:5120'
+            : 'nullable|image|mimes:jpg,jpeg,png,svg,webp|max:5120';
+
+        // return [
+        //     'document_type' => ['required', new Enum(KycDocumentType::class)],
+        //     'document_front' => 'required|image|mimes:jpg,jpeg,png|max:5120',
+        //     'document_back' => 'nullable|image|mimes:jpg,jpeg,png|max:5120',
+            // 'document_issuing_country' => 'required|string|size:3',
+        //     'document_issue_date' => 'required|date|before:today',
+        //     'document_expiry_date' => 'required|date|after:today',
+        // ];
+
+        return $rules;
     }
 
     /**
@@ -78,7 +101,6 @@ class KycForm extends Form
         return $this->only([
             'full_name',
             'date_of_birth',
-            'gender',
             'nationality',
             'address_line1',
             'address_line2',
@@ -86,6 +108,7 @@ class KycForm extends Form
             'state',
             'postal_code',
             'country',
+            'gender',
             'document_type'
         ]);
     }

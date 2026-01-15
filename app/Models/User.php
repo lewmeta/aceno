@@ -7,6 +7,7 @@ namespace App\Models;
 use App\Enums\KycStatus;
 use App\Enums\UserType;
 use Illuminate\Database\Eloquent\Attributes\Scope;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasOne;
@@ -28,6 +29,7 @@ class User extends Authenticatable
     use HasFactory, Notifiable, SoftDeletes;
 
     protected $table = 'users';
+    protected string $guard = 'web';
 
     /**
      * The attributes that are mass assignable.
@@ -66,7 +68,10 @@ class User extends Authenticatable
     {
         return [
             'email_verified_at' => 'datetime',
+            'phone_verified_at' => 'datetime',
             'password' => 'hashed',
+            // 'user_type' => UserType::class,
+            'is_active' => 'boolean',
         ];
     }
 
@@ -109,7 +114,7 @@ class User extends Authenticatable
      */
     public function kyc(): HasOne
     {
-        return $this->hasOne(Kyc::class);
+        return $this->hasOne(Kyc::class, 'user_id');
     }
 
     /**
@@ -182,16 +187,28 @@ class User extends Authenticatable
         return $this->kyc_verified === true;
     }
 
+    // /**
+    //  * Get the user's full avatar URL.
+    //  * 
+    //  * @return string
+    //  */
+    // public function getAvatarUrlAttributes(): string
+    // {
+    //     return $this->avatar_path
+    //         ? asset('storage/' . $this->avatar_path)
+    //         : asset('storage/defaults/avatar.png');
+    // }
+
     /**
-     * Get the user's full avatar URL.
-     * 
-     * @return string
+     * Accessor: Avatar URL with fallback to default.
      */
-    public function getAvatarUrlAttributes(): string
+    protected function avatarUrl(): Attribute
     {
-        return $this->avatar_path
-            ? asset('storage/' . $this->avatar_path)
-            : asset('storage/defaults/avatar.png');
+        return Attribute::make(
+            get: fn() => $this->avatar_path
+                ? asset("storage/{$this->avatar_path}")
+                : "https://ui-avatars.com/api/?name=" . urlencode($this->name),
+        );
     }
 
     /**
@@ -203,7 +220,7 @@ class User extends Authenticatable
     #[Scope]
     public function customers(Builder $query)
     {
-        return $query->where('user_type', UserType::CUSTOMER->value);
+        return $query->where('user_type', UserType::CUSTOMER);
     }
 
     /**
@@ -213,9 +230,9 @@ class User extends Authenticatable
      * @return \Illuminate\Database\Eloquent\Builder<User>
      */
     #[Scope]
-    public function vendors(Builder $query)
+    protected function vendors(Builder $query)
     {
-        return $query->where('user_type', UserType::VENDOR->value);
+        return $query->where('user_type', UserType::VENDOR);
     }
 
     /**
@@ -225,9 +242,9 @@ class User extends Authenticatable
      * @return \Illuminate\Database\Eloquent\Builder<User>
      */
     #[Scope]
-    public function approvedVendors(Builder $query)
+    protected function approvedVendors(Builder $query)
     {
-        return $query->vendors()->where('status', KycStatus::APPROVED->value);
+        return $query->vendors()->where('status', KycStatus::APPROVED);
     }
 
     /**
@@ -237,7 +254,7 @@ class User extends Authenticatable
      * @return \Illuminate\Database\Eloquent\Builder<User>
      */
     #[Scope]
-    public function active(Builder $query)
+    protected function active(Builder $query)
     {
         return $query->where('is_active', true)
             ->where(function ($q) {

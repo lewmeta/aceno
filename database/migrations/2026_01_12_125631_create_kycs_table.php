@@ -31,14 +31,14 @@ return new class extends Migration
             $table->string('nationality')->nullable();
 
             /** Document information */
-            $table->string('document_type');
+            $table->string('document_type')->nullable();
             $table->string('document_number')->nullable()->comment('Passport/ID number'); //
             $table->date('document_issue_date')->nullable();
             $table->date('document_expiry_date')->nullable();
             $table->string('document_issuing_country')->nullable();
 
             /* Document files */
-            $table->string('document_front_path'); // Front of ID/passport
+            $table->string('document_front_path')->nullable(); // Front of ID/passport
             $table->string('document_back_path')->nullable(); // Back of ID (if applicable)
             $table->string('selfie_path')->nullable(); // Selfie for verification (like Stripe)
 
