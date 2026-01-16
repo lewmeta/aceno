@@ -42,7 +42,7 @@ class Step3Address extends Component
      */
     public function goBack(): void
     {
-        $this->redirectRoute('vendor.kyc.step3', navigate: true);
+        $this->redirectRoute('vendor.kyc.step2', navigate: true);
     }
 
     /**

@@ -47,6 +47,10 @@ class Step2Documents extends Component
 
         // Fill form object properties with existing data.
         $this->form->fill($kyc->toArray());
+
+        // Explicitly set the paths if fill() missed them
+        $this->form->document_front = $kyc->document_front_path;
+        $this->form->document_back = $kyc->document_back_path;
     }
 
     /**

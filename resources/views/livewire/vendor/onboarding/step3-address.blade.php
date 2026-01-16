@@ -33,33 +33,58 @@
                         </div>
                     </div>
                 </div>
-                <form wire:submit="">
+                <form wire:submit="proceedToStep4">
                     <!-- Content -->
                     <div class="px-6 py-5 space-y-5">
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                             <!-- Full name -->
                             <div>
-                                <label class="block text-xs font-medium text-zinc-700 dark:text-zinc-200">Legal Full
-                                    Name*</label>
-                                <input wire:model="form.full_name" id="full_name" type="text"
-                                    placeholder="e.g. MetaStark"
+                                <label class="block text-xs font-medium text-zinc-700 dark:text-zinc-200">Address line1*</label>
+                                <input wire:model="form.address_line1" id="address_line1" type="text"
+                                    placeholder="e.g. Some 123 @_line1"
                                     class="mt-1 block w-full h-10 px-4 py-2 text-xs bg-white border border-transparent rounded-lg appearance-none dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 duration-300 ring-1 ring-zinc-200 dark:ring-zinc-700 placeholder-zinc-400 dark:placeholder-zinc-500 focus:border-zinc-300 dark:focus:border-blue-700 focus:bg-transparent focus:outline-none focus:ring-blue-500 focus:ring-offset-2 focus:ring-2 sm:text-sm" />
 
                                 <!-- Error message display -->
-                                <x-input-error :messages="$errors->get('form.full_name')" class="mt-2" />
+                                <x-input-error :messages="$errors->get('form.address_line1')" class="mt-2" />
                             </div>
 
-                            <!-- Date of Birth -->
+                            <!-- Address line2 -->
                             <div>
-                                <label class="block text-xs font-medium text-zinc-700 dark:text-zinc-200">Date of
-                                    Birth*</label>
-                                <input type="date" wire:model='form.date_of_birth' type="text"
+                                <label class="block text-xs font-medium text-zinc-700 dark:text-zinc-200">Address line2*</label>
+                                <input wire:model="form.address_line1" id="address_line1" type="text"
+                                    placeholder="e.g. Some 123 @_line2"
                                     class="mt-1 block w-full h-10 px-4 py-2 text-xs bg-white border border-transparent rounded-lg appearance-none dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 duration-300 ring-1 ring-zinc-200 dark:ring-zinc-700 placeholder-zinc-400 dark:placeholder-zinc-500 focus:border-zinc-300 dark:focus:border-blue-700 focus:bg-transparent focus:outline-none focus:ring-blue-500 focus:ring-offset-2 focus:ring-2 sm:text-sm" />
 
                                 <!-- Error message display -->
-                                <x-input-error :messages="$errors->get('form.date_of_birth')" class="mt-2" />
+                                <x-input-error :messages="$errors->get('form.address_line2')" class="mt-2" />
                             </div>
+
                         </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <!-- City -->
+                            <div>
+                                <label class="block text-xs font-medium text-zinc-700 dark:text-zinc-200">City*</label>
+                                <input wire:model="form.city" id="city" type="text"
+                                    placeholder="e.g. Some 123 @_line1"
+                                    class="mt-1 block w-full h-10 px-4 py-2 text-xs bg-white border border-transparent rounded-lg appearance-none dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 duration-300 ring-1 ring-zinc-200 dark:ring-zinc-700 placeholder-zinc-400 dark:placeholder-zinc-500 focus:border-zinc-300 dark:focus:border-blue-700 focus:bg-transparent focus:outline-none focus:ring-blue-500 focus:ring-offset-2 focus:ring-2 sm:text-sm" />
+
+                                <!-- Error message display -->
+                                <x-input-error :messages="$errors->get('form.city')" class="mt-2" />
+                            </div>
+
+                            <!-- Address line2 -->
+                            <div>
+                                <label class="block text-xs font-medium text-zinc-700 dark:text-zinc-200">Postal code*</label>
+                                <input wire:model="form.postal_code" id="postal_code" type="text"
+                                    placeholder="e.g. PO Box 4343. In Kstreet"
+                                    class="mt-1 block w-full h-10 px-4 py-2 text-xs bg-white border border-transparent rounded-lg appearance-none dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 duration-300 ring-1 ring-zinc-200 dark:ring-zinc-700 placeholder-zinc-400 dark:placeholder-zinc-500 focus:border-zinc-300 dark:focus:border-blue-700 focus:bg-transparent focus:outline-none focus:ring-blue-500 focus:ring-offset-2 focus:ring-2 sm:text-sm" />
+
+                                <!-- Error message display -->
+                                <x-input-error :messages="$errors->get('form.postal_code')" class="mt-2" />
+                            </div>
+
+                        </div>
+
                     </div>
                     <!-- Footer -->
                     <div class="px-6 py-4 border-t border-zinc-100 dark:border-zinc-700 flex items-center gap-3">
@@ -71,12 +96,12 @@
                         <div class="ml-auto flex items-center gap-2">
                             <button
                                 class="relative flex items-center text-center font-medium transition-colors duration-200 ease-in-out select-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:z-10 justify-center rounded-md text-zinc-700 bg-white outline outline-zinc-200 hover:shadow-sm hover:bg-zinc-50 focus-visible:outline-zinc-900 dark:text-zinc-100 dark:bg-zinc-800 dark:outline-zinc-600 dark:hover:bg-zinc-700 dark:focus-visible:outline-zinc-400 h-7 px-3 text-xs"
-                                type="button" wire:click="goBack" {{-- @click="close()" :disabled="submitting" --}}>
+                                type="button" wire:click="goBack">
                                 {{ __('Back') }}
                             </button>
                             <button
                                 class="relative flex items-center text-center font-medium transition-colors duration-200 ease-in-out select-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:z-10 justify-center rounded-md text-white bg-blue-700 outline outline-blue-700 hover:bg-blue-600 focus-visible:outline-blue-600 dark:bg-blue-600 dark:text-zinc-100 dark:outline-blue-600 dark:hover:bg-blue-700 dark:focus-visible:outline-blue-500 h-7 px-3 text-xs"
-                                type="submit" {{-- @click="submit()" :disabled="!valid() || submitting" --}}>
+                                type="submit" >
                                 {{ __('Next') }}
                             </button>
                         </div>

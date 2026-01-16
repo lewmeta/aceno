@@ -1,27 +1,79 @@
+{{-- <div class="max-w-3xl mx-auto py-10">
+    <div class="mb-8">
+        <h2 class="text-3xl font-bold text-gray-900 text-center">Final Review</h2>
+        <p class="text-gray-500 text-center mt-2">Please double-check everything before submitting for review.</p>
+    </div>
+
+    <div class="space-y-6">
+        <!-- Section: Personal & Address -->
+        <div class="bg-white rounded-2xl border shadow-sm divide-y">
+            <div class="p-6">
+                <div class="flex justify-between items-center mb-4">
+                    <h3 class="font-bold text-gray-800">Identity & Residence</h3>
+                    <a href="{{ route('vendor.kyc.create') }}" wire:navigate
+                        class="text-blue-600 text-sm font-medium">Edit</a>
+                </div>
+                <dl class="grid grid-cols-2 gap-4 text-sm">
+                    <div>
+                        <dt class="text-gray-500">Full Name</dt>
+                        <dd class="text-gray-900 font-medium">{{ $form->full_name }}</dd>
+                    </div>
+                    <div>
+                        <dt class="text-gray-500">Address</dt>
+                        <dd class="text-gray-900 font-medium">{{ $form->address_line1 }}, {{ $form->city }}</dd>
+                    </div>
+                </dl>
+            </div>
+
+            <!-- Section: Documents -->
+            <div class="p-6">
+                <div class="flex justify-between items-center mb-4">
+                    <h3 class="font-bold text-gray-800">Documents</h3>
+                    <a href="{{ route('vendor.kyc.step2') }}" wire:navigate
+                        class="text-blue-600 text-sm font-medium">Edit</a>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <div class="p-3 bg-gray-50 rounded-lg border">
+                        <span
+                            class="text-sm font-medium text-gray-900">{{ \App\Enums\KycDocumentType::tryFrom($form->document_type)?->label() }}</span>
+                    </div>
+                    @if ($form->document_front)
+                        <img src="{{ $form->document_front->temporaryUrl() }}"
+                            class="w-20 h-14 object-cover rounded-md shadow-sm border">
+                    @endif
+                </div>
+            </div>
+        </div>
+
+        @error('submit')
+            <div class="p-3 bg-red-50 text-red-700 rounded-lg text-sm">{{ $message }}</div>
+        @enderror
+
+        <div class="flex flex-col gap-4">
+            <button wire:click="submit" wire:loading.attr="disabled"
+                class="w-full bg-green-600 text-white py-4 rounded-xl font-extrabold text-lg shadow-xl hover:bg-green-700 transition-all active:scale-95">
+                <span wire:loading.remove>Submit My Application</span>
+                <span wire:loading>Processing Verification...</span>
+            </button>
+            <p class="text-center text-xs text-gray-400">By clicking submit, you agree to our Terms of Service regarding
+                data processing.</p>
+        </div>
+    </div>
+</div> --}}
+
 <div class="min-h-screen flex items-center justify-center pt-10">
-    <div class="w-full max-w-3xl" x-data="{
-        open: true,
-        drag: false,
-        submitting: false,
-        show() {
-            this.reset();
-            this.open = true;
-            this.$nextTick(() => this.$refs.name?.focus());
-        },
-        close() {
-            if (this.submitting) return;
-            this.open = false;
-        },
-    }">
-        <div class="px-4 text-zinc-900 dark:text-white font-bold">
-            {{ __('Set up your KYC') }}
+    <div class="w-full max-w-3xl">
+        <div
+            class="px-4 w-full mb-2 text-center flex flex-col items-center justify-center text-zinc-900 dark:text-white font-bold">
+            {{ __('Final Review') }}
+            <p class="text-gray-500 text-base text-center mt-1">Please double-check everything before submitting for
+                review.</p>
         </div>
 
         <!-- Dialog -->
-        <div
-            class="flex items-center justify-center inset-0 z-50 sm:items-center p-4 pt-2" role="dialog"
+        <div class="flex items-center justify-center inset-0 z-50 sm:items-center p-4 pt-2" role="dialog"
             aria-modal="true" aria-labelledby="org-title">
-            <div 
+            <div
                 class="w-full sm:max-w-3xl rounded-2xl bg-white dark:bg-zinc-800 shadow-xl  outline-1 outline-black/5 dark:-outline-offset-1 dark:outline-white/10">
                 <!-- Header -->
                 <div class="flex items-center justify-between px-6 py-4 border-b border-zinc-100 dark:border-zinc-700">
@@ -47,216 +99,174 @@
                         </div>
                     </div>
                 </div>
-                <form wire:submit="saveAndContinue">
+                <form wire:submit="submit">
                     <!-- Content -->
                     <div class="px-6 py-5 space-y-5">
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                             <!-- Full name -->
                             <div>
-                                <label class="block text-xs font-medium text-zinc-700 dark:text-zinc-200">Legal Full
-                                    Name*</label>
-                                <input wire:model="form.full_name" id="full_name" type="text" placeholder="e.g. MetaStark"
-                                    class="mt-1 block w-full h-10 px-4 py-2 text-xs bg-white border border-transparent rounded-lg appearance-none dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 duration-300 ring-1 ring-zinc-200 dark:ring-zinc-700 placeholder-zinc-400 dark:placeholder-zinc-500 focus:border-zinc-300 dark:focus:border-blue-700 focus:bg-transparent focus:outline-none focus:ring-blue-500 focus:ring-offset-2 focus:ring-2 sm:text-sm" />
-
-                                <!-- Error message display -->
-                                <x-input-error :messages="$errors->get('form.full_name')" class="mt-2" />
+                                <label class="block text-xs font-medium text-zinc-700 dark:text-zinc-200">Full
+                                    name*</label>
+                                <dd type="text"
+                                    class="mt-1 block w-full h-10 px-4 py-2 text-xs bg-white border border-transparent rounded-lg appearance-none dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 duration-300 ring-1 ring-zinc-200 dark:ring-zinc-700 placeholder-zinc-400 dark:placeholder-zinc-500 focus:border-zinc-300 dark:focus:border-blue-700 focus:bg-transparent focus:outline-none focus:ring-blue-500 focus:ring-offset-2 focus:ring-2 sm:text-sm">
+                                    {{ $form->full_name }}
+                                </dd>
                             </div>
 
                             <!-- Date of Birth -->
                             <div>
                                 <label class="block text-xs font-medium text-zinc-700 dark:text-zinc-200">Date of
                                     Birth*</label>
-                                <input type="date" wire:model='form.date_of_birth' {{-- x-model="form.website"  --}}
-                                    type="text" placeholder="19/03/9999"
-                                    class="mt-1 block w-full h-10 px-4 py-2 text-xs bg-white border border-transparent rounded-lg appearance-none dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 duration-300 ring-1 ring-zinc-200 dark:ring-zinc-700 placeholder-zinc-400 dark:placeholder-zinc-500 focus:border-zinc-300 dark:focus:border-blue-700 focus:bg-transparent focus:outline-none focus:ring-blue-500 focus:ring-offset-2 focus:ring-2 sm:text-sm" />
+                                <dd type="text"
+                                    class="mt-1 block w-full h-10 px-4 py-2 text-xs bg-white border border-transparent rounded-lg appearance-none dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 duration-300 ring-1 ring-zinc-200 dark:ring-zinc-700 placeholder-zinc-400 dark:placeholder-zinc-500 focus:border-zinc-300 dark:focus:border-blue-700 focus:bg-transparent focus:outline-none focus:ring-blue-500 focus:ring-offset-2 focus:ring-2 sm:text-sm">
+                                    {{ $form->date_of_birth }}
+                                </dd>
+                            </div>
 
-                                <!-- Error message display -->
-                                <x-input-error :messages="$errors->get('form.date_of_birth')" class="mt-2" />
-                            </div>
-                            <!-- Logo dropzone spans two cols -->
-                            <div class="md:col-span-2">
-                                <label class="sr-only">Logo*</label>
-                                <div class="mt-1 grid grid-cols-[96px_1fr] gap-3 items-start">
-                                    <div
-                                        class="size-24 rounded-xl overflow-hidden ring-1 ring-zinc-200 dark:ring-zinc-700 bg-zinc-100 dark:bg-zinc-700 grid place-items-center">
-                                        <img x-show="form.logo" :src="form.logo" alt="Logo"
-                                            class="size-full object-cover" />
-                                        <div x-show="!form.logo" class="text-zinc-400">
-                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
-                                                stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                                stroke-linejoin="round" class="icon icon-tabler-accessibility size-5">
-                                                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                                <path
-                                                    d="M7 3m0 2.667a2.667 2.667 0 0 1 2.667 -2.667h8.666a2.667 2.667 0 0 1 2.667 2.667v8.666a2.667 2.667 0 0 1 -2.667 2.667h-8.666a2.667 2.667 0 0 1 -2.667 -2.667z">
-                                                </path>
-                                                <path
-                                                    d="M4.012 7.26a2.005 2.005 0 0 0 -1.012 1.737v10c0 1.1 .9 2 2 2h10c.75 0 1.158 -.385 1.5 -1">
-                                                </path>
-                                                <path d="M17 7h.01"></path>
-                                                <path d="M7 13l3.644 -3.644a1.21 1.21 0 0 1 1.712 0l3.644 3.644"></path>
-                                                <path d="M15 12l1.644 -1.644a1.21 1.21 0 0 1 1.712 0l2.644 2.644"></path>
-                                            </svg>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <label class="sr-only">Profile image</label>
-                                        <div @dragover.prevent @dragenter.prevent="drag=true"
-                                            @dragleave.prevent="drag=false" @drop="drop($event)"
-                                            :class="drag ? 'ring-2 ring-indigo-500 bg-indigo-50/40 dark:bg-indigo-400/10' :
-                                                'ring-1 ring-zinc-200 dark:ring-zinc-700'"
-                                            class="rounded-xl p-4 bg-white dark:bg-zinc-800 text-center">
-                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
-                                                stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                                stroke-linejoin="round"
-                                                class="icon icon-tabler-accessibility size-4 text-zinc-500 dark:text-zinc-30 mx-auto mb-1">
-                                                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                                <path
-                                                    d="M7 3m0 2.667a2.667 2.667 0 0 1 2.667 -2.667h8.666a2.667 2.667 0 0 1 2.667 2.667v8.666a2.667 2.667 0 0 1 -2.667 2.667h-8.666a2.667 2.667 0 0 1 -2.667 -2.667z">
-                                                </path>
-                                                <path
-                                                    d="M4.012 7.26a2.005 2.005 0 0 0 -1.012 1.737v10c0 1.1 .9 2 2 2h10c.75 0 1.158 -.385 1.5 -1">
-                                                </path>
-                                                <path d="M17 7h.01"></path>
-                                                <path d="M7 13l3.644 -3.644a1.21 1.21 0 0 1 1.712 0l3.644 3.644"></path>
-                                                <path d="M15 12l1.644 -1.644a1.21 1.21 0 0 1 1.712 0l2.644 2.644"></path>
-                                            </svg>
-                                            <label
-                                                class="text-xs text-blue-600 dark:text-blue-400 cursor-pointer font-medium">
-                                                <input type="file" class="sr-only" accept="image/*"
-                                                    @change="pick($event)" />Click to upload
-                                            </label>
-                                            <span class="text-xs text-zinc-500 font-medium">
-                                                or drag & drop</span>
-                                            <div class="mt-1 text-[0.70rem] text-zinc-500 font-medium">
-                                                SVG, PNG, JPG, GIF (max 800×400px)
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Slug -->
-                            <div>
-                                <label class="block text-xs font-medium text-zinc-700 dark:text-zinc-200">Public
-                                    URL*</label>
-                                <div class="mt-1 grid grid-cols-[minmax(120px,180px)_1fr] items-center">
-                                    <div
-                                        class="block w-full h-10 px-4 py-2 text-xs bg-white border border-transparent rounded-lg rounded-r-none appearance-none bg-zinc-50 dark:bg-white/5 text-zinc-700 dark:text-zinc-300 duration-300 ring-1 ring-zinc-200 dark:ring-zinc-700 placeholder-zinc-400 dark:placeholder-zinc-500 focus:border-zinc-300 dark:focus:border-blue-700 focus:bg-transparent focus:outline-none focus:ring-blue-500 focus:ring-offset-2 focus:ring-2 sm:text-sm">
-                                        example.com/org/
-                                    </div>
-                                    <input x-model="form.slug" type="text" placeholder="acme"
-                                        class="block w-full h-10 px-4 py-2 text-xs bg-white border border-transparent rounded-lg rounded-l-none appearance-none dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 duration-300 ring-1 ring-zinc-200 dark:ring-zinc-700 placeholder-zinc-400 dark:placeholder-zinc-500 focus:border-zinc-300 dark:focus:border-blue-700 focus:bg-transparent focus:outline-none focus:ring-blue-500 focus:ring-offset-2 focus:ring-2 sm:text-sm" />
-                                </div>
-                                <p class="mt-1 text-[0.70rem]"
-                                    :class="slugOk(form.slug) ? 'text-green-600 dark:text-green-400' :
-                                        'text-red-600 dark:text-red-400'"
-                                    x-text="slugOk(form.slug) ? 'Looks good' : 'Use 3–30 lowercase letters or dashes' ">
-                                </p>
-                            </div>
-                            <!-- Industry -->
+                            <!-- Gender -->
                             <div>
                                 <label
                                     class="block text-xs font-medium text-zinc-700 dark:text-zinc-200">Gender*</label>
-                                <select wire:model="form.gender"
+                                <dd type="text"
                                     class="mt-1 block w-full h-10 px-4 py-2 text-xs bg-white border border-transparent rounded-lg appearance-none dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 duration-300 ring-1 ring-zinc-200 dark:ring-zinc-700 placeholder-zinc-400 dark:placeholder-zinc-500 focus:border-zinc-300 dark:focus:border-blue-700 focus:bg-transparent focus:outline-none focus:ring-blue-500 focus:ring-offset-2 focus:ring-2 sm:text-sm">
-                                    <option>Select Gender</option>
-                                    @foreach (\App\Enums\Gender::cases() as $gender)
-                                        <option wire:key="{{ $gender->value }}" value="{{ $gender->value }}">
-                                            {{ $gender->label() }}</option>
-                                    @endforeach
-                                </select>
-                                <!-- Error message display -->
-                                <x-input-error :messages="$errors->get('form.gender')" class="mt-2" />
-
+                                    {{ $form->gender }}
+                                </dd>
                             </div>
 
                             <!-- Nationality -->
                             <div>
-                                <label
-                                    class="block text-xs font-medium text-zinc-700 dark:text-zinc-200">Nationality*</label>
-                                <input wire:model='form.nationality' type="text" placeholder="e.g. USA"
-                                    class="mt-1 block w-full h-10 px-4 py-2 text-xs bg-white border border-transparent rounded-lg appearance-none dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 duration-300 ring-1 ring-zinc-200 dark:ring-zinc-700 placeholder-zinc-400 dark:placeholder-zinc-500 focus:border-zinc-300 dark:focus:border-blue-700 focus:bg-transparent focus:outline-none focus:ring-blue-500 focus:ring-offset-2 focus:ring-2 sm:text-sm" />
-
-                                <!-- Error message display -->
-                                <x-input-error :messages="$errors->get('form.nationality')" class="mt-2" />
+                                <label class="block text-xs font-medium text-zinc-700 dark:text-zinc-200">Nationality
+                                    (ISO 3-Letter)*</label>
+                                <dd type="text"
+                                    class="mt-1 block w-full h-10 px-4 py-2 text-xs bg-white border border-transparent rounded-lg appearance-none dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 duration-300 ring-1 ring-zinc-200 dark:ring-zinc-700 placeholder-zinc-400 dark:placeholder-zinc-500 focus:border-zinc-300 dark:focus:border-blue-700 focus:bg-transparent focus:outline-none focus:ring-blue-500 focus:ring-offset-2 focus:ring-2 sm:text-sm">
+                                    {{ $form->nationality }}
+                                </dd>
                             </div>
-                            {{-- <!-- HQ -->
-                            <div class="md:col-span-2">
-                                <label
-                                    class="block text-xs font-medium text-zinc-700 dark:text-zinc-200">Headquarters</label>
-                                <div class="mt-1 flex items-center gap-2">
-                                    <div class="text-zinc-500 dark:text-zinc-300">
-                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
-                                            stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                            stroke-linejoin="round" class="icon icon-tabler-arrow-map-pin size-4">
-                                            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                            <path d="M9 11a3 3 0 1 0 6 0a3 3 0 0 0 -6 0"></path>
-                                            <path
-                                                d="M17.657 16.657l-4.243 4.243a2 2 0 0 1 -2.827 0l-4.244 -4.243a8 8 0 1 1 11.314 0z">
-                                            </path>
-                                        </svg>
-                                    </div>
-                                    <input x-model="form.hq" type="text" placeholder="City, Country"
-                                        class="flex-1 mt-1 block w-full h-10 px-4 py-2 text-xs bg-white border border-transparent rounded-lg appearance-none dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 duration-300 ring-1 ring-zinc-200 dark:ring-zinc-700 placeholder-zinc-400 dark:placeholder-zinc-500 focus:border-zinc-300 dark:focus:border-blue-700 focus:bg-transparent focus:outline-none focus:ring-blue-500 focus:ring-offset-2 focus:ring-2 sm:text-sm" />
-                                </div>
-                            </div>
-                            <!-- Tags -->
-                            <div class="md:col-span-2">
-                                <label class="block text-xs font-medium text-zinc-700 dark:text-zinc-200">Keywords
-                                    (1–10)</label>
-                                <div class="mt-1 flex items-end gap-2">
-                                    <input x-model="form.tagInput" @keydown.enter.prevent="addTag()" type="text"
-                                        placeholder="e.g. b2b, saas, marketplace"
-                                        class="flex-1 mt-1 block w-full h-10 px-4 py-2 text-xs bg-white border border-transparent rounded-lg appearance-none dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 duration-300 ring-1 ring-zinc-200 dark:ring-zinc-700 placeholder-zinc-400 dark:placeholder-zinc-500 focus:border-zinc-300 dark:focus:border-blue-700 focus:bg-transparent focus:outline-none focus:ring-blue-500 focus:ring-offset-2 focus:ring-2 sm:text-sm" />
-                                    <button
-                                        class="relative flex items-center justify-center text-center font-medium transition-colors duration-200 ease-in-out select-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:z-10 justify-center rounded-md text-zinc-700 bg-white outline outline-zinc-200 hover:shadow-sm hover:bg-zinc-50 focus-visible:outline-zinc-900 dark:text-zinc-100 dark:bg-zinc-800 dark:outline-zinc-600 dark:hover:bg-zinc-700 dark:focus-visible:outline-zinc-400 h-10 px-5 text-sm"
-                                        type="button" :disabled="!form.tagInput" @click="addTag()">
-                                        Add
-                                    </button>
-                                </div>
-                                <div class="mt-2 flex flex-wrap gap-2">
-                                    <template x-for="(t,i) in form.tags" :key="t">
-                                        <span
-                                            class="inline-flex items-center gap-1 text-xs px-2 py-1 rounded-full bg-zinc-100 dark:bg-zinc-700 text-zinc-700 dark:text-zinc-200">
-                                            <span x-text="t"></span>
-                                            <button type="button"
-                                                class="text-zinc-500 hover:text-zinc-700 dark:hover:text-zinc-300"
-                                                @click="rmTag(i)">
-                                                ×
-                                            </button>
-                                        </span>
-                                    </template>
-                                </div>
-                            </div>
-                            <!-- Description -->
-                            <div class="md:col-span-2">
-                                <label class="block text-xs font-medium text-zinc-700 dark:text-zinc-200">About the
-                                    organization*</label>
-                                <textarea x-model="form.description" rows="4" placeholder="What do you build? Who do you help?"
-                                    class="mt-1 block w-full px-4 py-2 text-xs bg-white border border-transparent rounded-lg appearance-none dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 duration-300 ring-1 ring-zinc-200 dark:ring-zinc-700 placeholder-zinc-400 dark:placeholder-zinc-500 focus:border-zinc-300 dark:focus:border-blue-700 focus:bg-transparent focus:outline-none focus:ring-blue-500 focus:ring-offset-2 focus:ring-2 sm:text-sm"></textarea>
-                            </div> --}}
                         </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <!-- Document type -->
+                            <div>
+                                <label class="block text-xs font-medium text-zinc-700 dark:text-zinc-200">Document
+                                    type*</label>
+                                <dd
+                                    class="mt-1 block w-full h-10 px-4 py-2 text-xs bg-white border border-transparent rounded-lg appearance-none dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 duration-300 ring-1 ring-zinc-200 dark:ring-zinc-700 placeholder-zinc-400 dark:placeholder-zinc-500 focus:border-zinc-300 dark:focus:border-blue-700 focus:bg-transparent focus:outline-none focus:ring-blue-500 focus:ring-offset-2 focus:ring-2 sm:text-sm">
+                                    {{ $form->document_type }}
+                                </dd>
+                            </div>
+
+                            <!-- Issue date -->
+                            <div>
+                                <label class="block text-xs font-medium text-zinc-700 dark:text-zinc-200">Issue
+                                    date*</label>
+                                <dd
+                                    class="mt-1 block w-full h-10 px-4 py-2 text-xs bg-white border border-transparent rounded-lg appearance-none dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 duration-300 ring-1 ring-zinc-200 dark:ring-zinc-700 placeholder-zinc-400 dark:placeholder-zinc-500 focus:border-zinc-300 dark:focus:border-blue-700 focus:bg-transparent focus:outline-none focus:ring-blue-500 focus:ring-offset-2 focus:ring-2 sm:text-sm">
+                                    {{ $form->document_issue_date }}
+                                </dd>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <!-- Front -->
+                            <div class="md:col-span-3">
+                                <label class="sr-only">Logo*</label>
+                                <label class="block text-xs font-medium text-zinc-700 dark:text-zinc-200">Upload
+                                    front side*</label>
+                                <div class="mt-1 grid grid-cols-[96px_1fr] gap-3 items-start">
+                                    <div
+                                        class="size-24 rounded-xl overflow-hidden ring-1 ring-zinc-200 dark:ring-zinc-700 bg-zinc-100 dark:bg-zinc-700 grid place-items-center">
+
+                                        <div
+                                            class="relative size-48 border-2 border-dashed rounded-xl flex items-center justify-center ">
+                                            @php
+                                                $preview = $form->getPreviewUrl(
+                                                    'document_front',
+                                                    auth()->user()->kyc->id,
+                                                );
+                                            @endphp
+
+                                            @if ($preview)
+                                                <img src="{{ $preview }}" class="w-full h-full object-contain">
+                                            @endif
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <!-- Nationality -->
+                            <div>
+                                <label class="block text-xs font-medium text-zinc-700 dark:text-zinc-200">Document
+                                    issuing country
+                                    (ISO 3-Letter)*</label>
+                                <input wire:model='form.document_issuing_country' type="text" placeholder="e.g. USA"
+                                    class="mt-1 block w-full h-10 px-4 py-2 text-xs bg-white border border-transparent rounded-lg appearance-none dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 duration-300 ring-1 ring-zinc-200 dark:ring-zinc-700 placeholder-zinc-400 dark:placeholder-zinc-500 focus:border-zinc-300 dark:focus:border-blue-700 focus:bg-transparent focus:outline-none focus:ring-blue-500 focus:ring-offset-2 focus:ring-2 sm:text-sm" />
+                            </div>
+
+                            <!-- Exporation date -->
+                            <div>
+                                <label class="block text-xs font-medium text-zinc-700 dark:text-zinc-200">Document
+                                    expiry date*</label>
+                                <input wire:model='form.document_expiry_date' type="date"
+                                    class="mt-1 block w-full h-10 px-4 py-2 text-xs bg-white border border-transparent rounded-lg appearance-none dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 duration-300 ring-1 ring-zinc-200 dark:ring-zinc-700 placeholder-zinc-400 dark:placeholder-zinc-500 focus:border-zinc-300 dark:focus:border-blue-700 focus:bg-transparent focus:outline-none focus:ring-blue-500 focus:ring-offset-2 focus:ring-2 sm:text-sm" />
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <!-- Full name -->
+                            <div>
+                                <label class="block text-xs font-medium text-zinc-700 dark:text-zinc-200">Address
+                                    line1*</label>
+                                <input wire:model="form.address_line1" id="address_line1" type="text"
+                                    placeholder="e.g. Some 123 @_line1"
+                                    class="mt-1 block w-full h-10 px-4 py-2 text-xs bg-white border border-transparent rounded-lg appearance-none dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 duration-300 ring-1 ring-zinc-200 dark:ring-zinc-700 placeholder-zinc-400 dark:placeholder-zinc-500 focus:border-zinc-300 dark:focus:border-blue-700 focus:bg-transparent focus:outline-none focus:ring-blue-500 focus:ring-offset-2 focus:ring-2 sm:text-sm" />
+                            </div>
+
+                            <!-- Address line2 -->
+                            <div>
+                                <label class="block text-xs font-medium text-zinc-700 dark:text-zinc-200">Address
+                                    line2*</label>
+                                <input wire:model="form.address_line1" id="address_line1" type="text"
+                                    placeholder="e.g. Some 123 @_line2"
+                                    class="mt-1 block w-full h-10 px-4 py-2 text-xs bg-white border border-transparent rounded-lg appearance-none dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 duration-300 ring-1 ring-zinc-200 dark:ring-zinc-700 placeholder-zinc-400 dark:placeholder-zinc-500 focus:border-zinc-300 dark:focus:border-blue-700 focus:bg-transparent focus:outline-none focus:ring-blue-500 focus:ring-offset-2 focus:ring-2 sm:text-sm" />
+                            </div>
+
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <!-- City -->
+                            <div>
+                                <label class="block text-xs font-medium text-zinc-700 dark:text-zinc-200">City*</label>
+                                <input wire:model="form.city" id="city" type="text"
+                                    class="mt-1 block w-full h-10 px-4 py-2 text-xs bg-white border border-transparent rounded-lg appearance-none dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 duration-300 ring-1 ring-zinc-200 dark:ring-zinc-700 placeholder-zinc-400 dark:placeholder-zinc-500 focus:border-zinc-300 dark:focus:border-blue-700 focus:bg-transparent focus:outline-none focus:ring-blue-500 focus:ring-offset-2 focus:ring-2 sm:text-sm" />
+                            </div>
+
+                            <!-- Address line2 -->
+                            <div>
+                                <label class="block text-xs font-medium text-zinc-700 dark:text-zinc-200">Postal
+                                    code*</label>
+                                <input wire:model="form.postal_code" type="text"
+                                    placeholder="e.g. PO Box 4343. In Kstreet"
+                                    class="mt-1 block w-full h-10 px-4 py-2 text-xs bg-white border border-transparent rounded-lg appearance-none dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 duration-300 ring-1 ring-zinc-200 dark:ring-zinc-700 placeholder-zinc-400 dark:placeholder-zinc-500 focus:border-zinc-300 dark:focus:border-blue-700 focus:bg-transparent focus:outline-none focus:ring-blue-500 focus:ring-offset-2 focus:ring-2 sm:text-sm" />
+                            </div>
+                        </div>
+
                     </div>
                     <!-- Footer -->
                     <div class="px-6 py-4 border-t border-zinc-100 dark:border-zinc-700 flex items-center gap-3">
                         <button
                             class="relative flex items-center  text-center font-medium transition-colors duration-200 ease-in-out select-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:z-10 justify-center rounded-md text-zinc-700 bg-white outline outline-zinc-200 hover:shadow-sm hover:bg-zinc-50 focus-visible:outline-zinc-900 dark:text-zinc-100 dark:bg-zinc-800 dark:outline-zinc-600 dark:hover:bg-zinc-700 dark:focus-visible:outline-zinc-400 h-7 px-3 text-xs"
-                            type="button" @click="close()" :disabled="submitting">
+                            type="button"wire:click="goBack">
                             {{ __('Cancel') }}
                         </button>
                         <div class="ml-auto flex items-center gap-2">
                             <button
                                 class="relative flex items-center text-center font-medium transition-colors duration-200 ease-in-out select-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:z-10 justify-center rounded-md text-zinc-700 bg-white outline outline-zinc-200 hover:shadow-sm hover:bg-zinc-50 focus-visible:outline-zinc-900 dark:text-zinc-100 dark:bg-zinc-800 dark:outline-zinc-600 dark:hover:bg-zinc-700 dark:focus-visible:outline-zinc-400 h-7 px-3 text-xs"
-                                type="button"
-                                 {{-- @click="close()" :disabled="submitting" --}}
-                                >
+                                type="button" wire:click="goBack">
                                 {{ __('Back') }}
                             </button>
                             <button
                                 class="relative flex items-center text-center font-medium transition-colors duration-200 ease-in-out select-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:z-10 justify-center rounded-md text-white bg-blue-700 outline outline-blue-700 hover:bg-blue-600 focus-visible:outline-blue-600 dark:bg-blue-600 dark:text-zinc-100 dark:outline-blue-600 dark:hover:bg-blue-700 dark:focus-visible:outline-blue-500 h-7 px-3 text-xs"
-                                type="submit" 
-                                {{-- @click="submit()" :disabled="!valid() || submitting" --}}
-                                >
-                                {{ __('Next') }}
+                                type="submit">
+                                {{ __('Submit and review') }}
                             </button>
                         </div>
                     </div>

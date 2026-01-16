@@ -21,9 +21,9 @@ class KycForm extends Form
     // Address Info
     public string $address_line1 = '';
     public string $address_line2 = '';
-    public string $city = '';
-    public string $state = '';
-    public string $postal_code = '';
+    public ?string $city = '';
+    public ?string $state = '';
+    public ?string $postal_code = '';
     public string $country = 'US';
     public ?string $document_issue_date;
     public ?string $document_issuing_country = '';
@@ -31,8 +31,11 @@ class KycForm extends Form
 
     // Documents - Note the explicit type hinting for Livewire uploads
     public string $document_type = '';
-    public ?TemporaryUploadedFile $document_front = null;
-    public ?TemporaryUploadedFile $document_back = null;
+    // public ?TemporaryUploadedFile $document_front = null;
+    // public ?TemporaryUploadedFile $document_back = null;
+
+    public $document_front = null;
+    public $document_back = null;
 
     /**
      * Rules for step 1: Personal Details.
@@ -50,33 +53,69 @@ class KycForm extends Form
     /**
      * Rules for Step 2: Documents.
      */
+    // public function step2Rules(): array
+    // {
+    //     $rules = [
+    //         'document_type' => ['required', new Enum(KycDocumentType::class)],
+    //         'document_front' => 'required|image|mimes:jpg,jpeg,webp,svg,png|max:5120',
+    //         'document_issue_date' => 'required|date|before:today',
+    //         'document_issuing_country' => 'required|string|size:3',
+    //         'document_expiry_date' => 'required|date|after:today',
+    //     ];
+
+    //     // Access the Enum logic directly
+    //     $docType = KycDocumentType::tryFrom($this->document_type);
+
+    //     $rules['document_back'] = ($docType && $docType->requireBackSide())
+    //         ? 'required|image|mimes:jpg,jpeg,png,svg,webp|max:5120'
+    //         : 'nullable|image|mimes:jpg,jpeg,png,svg,webp|max:5120';
+
+    //     return $rules;
+    // }
+
+    /**
+     * Rules for Step 2: Documents.
+     */
     public function step2Rules(): array
     {
-        $rules = [
-            'document_type' => ['required', new Enum(KycDocumentType::class)],
-            'document_front' => 'required|image|mimes:jpg,jpeg,webp,svg,png|max:5120',
-            'document_issue_date' => 'required|date|before:today',
-            'document_issuing_country' => 'required|string|size:3',
-            'document_expiry_date' => 'required|date|after:today',
-        ];
-
-        // Access the Enum logic directly
         $docType = KycDocumentType::tryFrom($this->document_type);
 
-        $rules['document_back'] = ($docType && $docType->requireBackSide())
-            ? 'required|image|mimes:jpg,jpeg,png,svg,webp|max:5120'
-            : 'nullable|image|mimes:jpg,jpeg,png,svg,webp|max:5120';
+        return [
+            'document_type' => ['required', new Enum(KycDocumentType::class)],
+            'document_issue_date' => 'required|date|before:today',
+            'document_expiry_date' => 'required|date|after:today',
+            'document_issuing_country' => 'required|string|size:3',
 
-        // return [
-        //     'document_type' => ['required', new Enum(KycDocumentType::class)],
-        //     'document_front' => 'required|image|mimes:jpg,jpeg,png|max:5120',
-        //     'document_back' => 'nullable|image|mimes:jpg,jpeg,png|max:5120',
-            // 'document_issuing_country' => 'required|string|size:3',
-        //     'document_issue_date' => 'required|date|before:today',
-        //     'document_expiry_date' => 'required|date|after:today',
-        // ];
+            // Smart Validation for Front
+            'document_front' => $this->resolveRules('document_front', required: true),
 
-        return $rules;
+            // Smart Validation for Back (Dynamic based on Enum)
+            'document_back' => $this->resolveRules(
+                field:'document_back',
+                required: ($docType && $docType->requireBackSide())
+            ),
+        ];
+    }
+
+    /**
+     * Precision Rule Resolver
+     */
+    private function resolveRules(string $field, bool $required): array
+    {
+        $value = $this->{$field};
+
+        // Case 1: Existing file path in DB (Pragmatic 'Resume' state)
+        if (is_string($value) && !empty($value)) {
+            return ['nullable'];
+        }
+
+        // Case 2: Fresh upload or missing file
+        return [
+            $required ? 'required' : 'nullable',
+            'image',
+            'mimes:jpg,jpeg,webp,svg,png',
+            'max:5120',
+        ];
     }
 
     /**
@@ -111,6 +150,30 @@ class KycForm extends Form
             'gender',
             'document_type'
         ]);
+    }
+
+    /**
+     * Helper to get a previewable URL for the UI.
+     */
+    public function getPreviewUrl(string $field, int $kycId): ?string
+    {
+        $value = $this->{$field};
+
+        if ($value instanceof TemporaryUploadedFile) {
+            return $value->temporaryUrl();
+        }
+
+        // If it's a string, it's our private path. 
+        // We route it through our new KycDocumentController.
+        if (is_string($value) && !empty($value)) {
+            $type = str_replace('document_', '', $field); // 'front' or 'back'
+            return route('vendor.kyc.documents.download', [
+                'kyc' => $kycId,
+                'type' => $type
+            ]);
+        }
+
+        return null;
     }
 
     /**

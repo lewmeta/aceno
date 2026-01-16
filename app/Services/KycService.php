@@ -26,7 +26,10 @@ final class KycService
      */
     public function saveStep2(User $user, KycForm $form): void
     {
-        $folder = "kyc-drafts/{$user->id}";
+        // $folder = "kyc-drafts/{$user->id}";
+        $basePath = "kyc/{$user->id}";
+        $oldPath = $user->kyc->document_front_path;
+
         $updates = [
             'document_type' => $form->document_type,
             'document_issue_date' => $form->document_issue_date,
@@ -36,11 +39,11 @@ final class KycService
 
         // Only uppload if a new file was actually provided
         if ($form->document_front instanceof TemporaryUploadedFile) {
-            $updates['document_front_path'] = $this->uploadFile($form->document_front, 'private');
-        }
+            $updates['document_front_path'] = $this->uploadFile($form->document_front, $basePath, 'private', $oldPath);
+        } 
 
         if ($form->document_back instanceof TemporaryUploadedFile) {
-            $updates['document_back_path'] = $this->uploadFile($form->document_back);
+            $updates['document_back_path'] = $this->uploadFile($form->document_back, $basePath, 'private');
         }
 
         $user->kyc->update($updates);
