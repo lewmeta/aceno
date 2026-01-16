@@ -44,4 +44,23 @@ trait SecureUploadTrait
 
         return false;
     }
+
+    /**
+     * Generate user-friendly download filename.
+     * 
+     * Format: KYC_{user_id}_{type}_{timestamp}.{ext}
+     * Example: KYC_123_front_20260115.jpg
+     * 
+     * @param Kyc $kyc KYC record
+     * @param string $type Document type
+     * @param string $path Original file path
+     * @return string Friendly filename
+     */
+    // private function generateFilename(Kyc $kyc, string $type, string $path): string
+    // {
+    //     $extension = pathinfo($path, PATHINFO_EXTENSION);
+    //     $timestamp = $kyc->created_at->format('Ymd');
+
+    //     return "KYC_{$kyc->user_id}_{$type}_{$timestamp}.{$extension}";
+    // }
 }

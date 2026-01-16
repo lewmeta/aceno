@@ -45,6 +45,10 @@ class Step4Review extends Component
 
         // Load complete KYC data for preview
         $this->form->fill($kyc->toArray());
+
+        // Explicitly set the paths if fill() missed them
+        $this->form->document_front = $kyc->document_front_path;
+        $this->form->document_back = $kyc->document_back_path;
     }
 
     /**
@@ -68,11 +72,27 @@ class Step4Review extends Component
             $service->finalizeSubmission(auth('web')->user(), $this->form);
 
             session()->flash('success', 'Application submitted');
-            $this->redirectRoute('vendor.kyc.pending', navigate:true);
+            $this->redirectRoute('vendor.kyc.pending', navigate: true);
         } catch (\Exception $e) {
             Log::error("KYC Submission Error: " . $e->getMessage());
             $this->addError('submit', 'We could not process your request. Please try again.');
         }
+    }
+
+    /**
+     * Go back
+     */
+    public function goBack(): void
+    {
+        $this->redirectRoute('vendor.kyc.step2', navigate: true);
+    }
+
+    /**
+     * Cancel
+     */
+    public function cancel(): void
+    {
+        $this->redirectRoute('home', navigate: true);
     }
 
     public function render()

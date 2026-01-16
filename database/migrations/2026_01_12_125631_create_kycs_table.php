@@ -28,7 +28,14 @@ return new class extends Migration
             $table->string('full_name');
             $table->date('date_of_birth');
             $table->string('gender')->nullable(); // uses enum
-            $table->string('nationality')->nullable();
+            $table->string('nationality', 3)->nullable(); // Use ISO 3166-1 alpha-3
+
+            /** Address information */
+            $table->string('address_line1')->nullable();
+            $table->string('address_line2')->nullable();
+            $table->string('city')->nullable();
+            $table->string('state')->nullable();
+            $table->string('postal_code', 20)->nullable();
 
             /** Document information */
             $table->string('document_type')->nullable();
@@ -55,6 +62,9 @@ return new class extends Migration
             /** Audit trails */
             $table->timestamps();
             $table->softDeletes();
+
+            // Ensure uniqueness works even with soft deletes
+            $table->unique(['user_id', 'deleted_at']);
         });
     }
 

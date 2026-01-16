@@ -39,7 +39,7 @@
                     <!-- Content -->
                     <div class="px-6 py-5 space-y-5">
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                            <!-- Industry -->
+                            <!-- Document type -->
                             <div>
                                 <label class="block text-xs font-medium text-zinc-700 dark:text-zinc-200">Document
                                     type*</label>
@@ -56,7 +56,7 @@
 
                             </div>
 
-                            <!-- Nationality -->
+                            <!-- Issue date -->
                             <div>
                                 <label class="block text-xs font-medium text-zinc-700 dark:text-zinc-200">Issue
                                     date*</label>
@@ -74,12 +74,51 @@
                                     <label class="block text-xs font-medium text-zinc-700 dark:text-zinc-200">Upload
                                         front side*</label>
                                 @endif
+
+                                {{-- @dump(['doc type' => $form->document_type, 'kyc id' => auth('web')->user()->kyc->id]) --}}
+                                {{-- @dump(['link' => route('vendor.kyc.documents.download', $kycId)]) --}}
+                                {{-- <img src="{{ route('vendor.kyc.documents.download', 1) }}" alt=""
+                                    class="size-20 object-cover"> --}}
                                 <div class="mt-1 grid grid-cols-[96px_1fr] gap-3 items-start">
                                     <div
                                         class="size-24 rounded-xl overflow-hidden ring-1 ring-zinc-200 dark:ring-zinc-700 bg-zinc-100 dark:bg-zinc-700 grid place-items-center">
-                                        @if ($form->document_front)
-                                            <img src="{{ $form->document_front->temporaryUrl() }}" alt="Logo"
-                                                class="size-full object-cover" />
+
+                                        <div
+                                            class="relative h-48 border-2 border-dashed rounded-xl flex items-center justify-center overflow-hidden">
+                                            @php
+                                                $preview = $form->getPreviewUrl(
+                                                    'document_front',
+                                                    auth()->user()->kyc->id,
+                                                );
+                                            @endphp
+
+                                            @if ($preview)
+                                                <img src="{{ $preview }}"
+                                                    class="size-40 object-center w-full h-full object-cover">
+                                                <div
+                                                    class="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 hover:opacity-100 transition">
+                                                    <label
+                                                        class="cursor-pointer bg-white text-gray-900 px-4 py-2 rounded-lg font-bold text-sm">
+                                                        Change Photo
+                                                        <input type="file" wire:model="form.document_front"
+                                                            class="hidden">
+                                                    </label>
+                                                </div>
+                                            @else
+                                                <input type="file" wire:model="form.document_front"
+                                                    class="absolute inset-0 opacity-0 cursor-pointer">
+                                                <div class="text-center">
+                                                    <span class="text-blue-600 font-bold">Click to upload Front
+                                                        Side</span>
+                                                </div>
+                                            @endif
+                                        </div>
+
+                                        {{-- @if ($form->document_front || $form->document_type)
+                                            <img src="{{ $form->document_front instanceof \Livewire\Features\SupportFileUploads\TemporaryUploadedFile
+                                                ? $form->document_front->temporaryUrl()
+                                                : route('vendor.kyc.documents.download', $kycId) }}"
+                                                alt="Document Front" class="size-full object-cover" />
                                         @else
                                             <div class="text-zinc-400">
                                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
@@ -100,7 +139,7 @@
                                                     </path>
                                                 </svg>
                                             </div>
-                                        @endif
+                                        @endif --}}
                                     </div>
                                     <div>
                                         <label class="sr-only">Profile image</label>

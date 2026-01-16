@@ -5,7 +5,9 @@ namespace App\Models;
 use App\Enums\Gender;
 use App\Enums\KycDocumentType;
 use App\Enums\KycStatus;
+use App\Policies\KycPolicy;
 use Illuminate\Database\Eloquent\Attributes\Scope;
+use Illuminate\Database\Eloquent\Attributes\UsePolicy;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -19,6 +21,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * Handles vendor identity verification similar to Stripe/Shopify compliance.
  * Supports GDPR auto-purge and legal holds for audits.
  */
+#[UsePolicy(KycPolicy::class)]
 class Kyc extends Model
 {
     use HasFactory, SoftDeletes;
@@ -50,6 +53,11 @@ class Kyc extends Model
         'user_agent',
         'verification_notes',
         'attempt_number',
+        'address_line1',
+        'address_line2',
+        'city',
+        'state',
+        'postal_code'
     ];
 
     /**
