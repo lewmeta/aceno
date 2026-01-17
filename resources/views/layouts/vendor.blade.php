@@ -32,12 +32,11 @@
             @endif
 
             <!-- Page Content -->
-            <main class="w-full overflow-y-auto min-h-screen">
+            <main class="w-full overflow-y-auto">
                 <!-- Navigation -->
                 @if (auth()->user('web')->isApprovedVendor())
                     <livewire:vendor.layout.header />
                 @endif
-
                 {{ $slot }}
             </main>
 
