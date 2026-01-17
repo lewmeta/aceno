@@ -2,48 +2,8 @@
     <div class="lg:hidden sticky top-0 z-40 bg-white dark:bg-zinc-800 border-b border-zinc-200 dark:border-zinc-800">
         <div class="flex items-center justify-between px-4 h-12">
             <div class="flex items-center gap-2">
-                <svg class="text-zinc-900 dark:text-white h-6" viewBox="0 0 2895 2895" fill="none"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <path
-                        d="M1936.72 1316.69V1677.28L1700.54 1540.97V1452.99L1537.73 1359.06L1461.65 1315.07V1042.46L1536.29 1085.55L1773.92 1222.76L1936.72 1316.69Z"
-                        stroke="#17181B" stroke-width="18.0294" stroke-linecap="round" stroke-linejoin="round"></path>
-                    <path
-                        d="M988.017 1041.56V1315.79L913.191 1359.06L753.454 1451.19V1537.55L516.003 1674.75V1314.16L675.746 1221.85L911.752 1085.55L988.017 1041.56Z"
-                        stroke="#17181B" stroke-width="18.0294" stroke-linecap="round" stroke-linejoin="round"></path>
-                    <path
-                        d="M2408.73 1044.08L2096.46 1224.38L1936.72 1316.69L1773.92 1222.75L1536.29 1085.55L1461.65 1042.46L1621.57 950.15L1696.21 907.06L1933.65 769.856L2408.73 1044.08Z"
-                        fill="#17181B" stroke="#17181B" stroke-width="18.0294" stroke-linecap="round"
-                        stroke-linejoin="round"></path>
-                    <path
-                        d="M1696.23 632.653L1383.96 812.947L1224.03 905.257L1061.23 811.324L748.96 631.03L1221.15 358.425L1696.23 632.653Z"
-                        fill="#17181B" stroke="#17181B" stroke-width="18.0294" stroke-linecap="round"
-                        stroke-linejoin="round"></path>
-                    <path
-                        d="M988.023 1041.56L911.761 1085.55L675.754 1221.85L516.012 1314.16L353.21 1220.05L40.9387 1039.76L512.947 767.333L748.954 903.635L825.218 947.627L988.023 1041.56Z"
-                        fill="#17181B" stroke="#17181B" stroke-width="18.0294" stroke-linecap="round"
-                        stroke-linejoin="round"></path>
-                    <path d="M2408.73 1044.08V1404.67L1936.72 1677.28V1316.69L2096.46 1224.38L2408.73 1044.08Z"
-                        stroke="#17181B" stroke-width="18.0294" stroke-linecap="round" stroke-linejoin="round"></path>
-                    <path
-                        d="M1700.55 1452.99V1813.58L1228.54 2086.18V1725.59L1388.28 1633.28L1624.47 1496.98L1700.55 1452.99Z"
-                        stroke="#17181B" stroke-width="18.0294" stroke-linecap="round" stroke-linejoin="round"></path>
-                    <path
-                        d="M1700.55 1452.99L1624.47 1496.98L1388.28 1633.28L1228.54 1725.59L1065.74 1631.48L828.288 1494.46L753.468 1451.19L913.207 1359.06L988.031 1315.79L1149.39 1222.75L1224.03 1179.66L1225.48 1178.76L1300.12 1221.85L1461.66 1315.07L1537.75 1359.06L1700.55 1452.99Z"
-                        fill="#17181B" stroke="#17181B" stroke-width="18.0294" stroke-linecap="round"
-                        stroke-linejoin="round"></path>
-                    <path
-                        d="M1228.54 1725.59V2086.18L753.468 1811.77V1451.19L828.288 1494.46L1065.74 1631.48L1228.54 1725.59Z"
-                        stroke="#17181B" stroke-width="18.0294" stroke-linecap="round" stroke-linejoin="round"></path>
-                    <path d="M516.012 1314.16V1674.75L40.9387 1400.34V1039.76L353.21 1220.05L516.012 1314.16Z"
-                        stroke="#17181B" stroke-width="18.0294" stroke-linecap="round" stroke-linejoin="round"></path>
-                    <path
-                        d="M1696.22 632.651V907.059L1621.58 950.149L1461.66 1042.46V1128.64L1300.12 1221.85L1225.47 1178.76L1224.03 1179.66V905.256L1383.95 812.945L1696.22 632.651Z"
-                        stroke="#17181B" stroke-width="18.0294" stroke-linecap="round" stroke-linejoin="round"></path>
-                    <path
-                        d="M1224.03 905.257V1179.66L1149.39 1222.75L988.03 1129.54V1041.56L825.225 947.626L748.96 903.634V631.029L1061.23 811.323L1224.03 905.257Z"
-                        stroke="#17181B" stroke-width="18.0294" stroke-linecap="round" stroke-linejoin="round"></path>
-                </svg>
-                <span class="text-sm font-semibold text-zinc-800 dark:text-zinc-100">Oxbow UI</span>
+                <img src="{{ asset('favicon.webp') }}" alt="Logo" class="size-6 object-contain rounded">
+                <span class="text-sm font-semibold text-zinc-800 dark:text-zinc-100">Aceno inc.</span>
             </div>
             <button
                 class="flex items-center justify-center text-center shadow-subtle font-medium duration-500 ease-in-out transition-colors focus:outline-2 focus:outline-offset-2 text-zinc-600 bg-zinc-50 outline outline-zinc-50 hover:bg-zinc-200 focus:outline-zinc-600 dark:text-zinc-100 dark:bg-zinc-800 dark:outline-zinc-800 dark:hover:bg-zinc-700 dark:focus:outline-zinc-700 size-7 p-0.5 text-xs rounded-md"
@@ -81,58 +41,10 @@
             <div
                 class="h-14 shrink-0 flex items-center justify-between px-4 border-b border-zinc-100 dark:border-zinc-800">
                 <div class="flex items-center gap-2">
-                    <svg class="text-zinc-900 dark:text-white h-8" viewBox="0 0 2895 2895" fill="none"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <path
-                            d="M1936.72 1316.69V1677.28L1700.54 1540.97V1452.99L1537.73 1359.06L1461.65 1315.07V1042.46L1536.29 1085.55L1773.92 1222.76L1936.72 1316.69Z"
-                            stroke="#17181B" stroke-width="18.0294" stroke-linecap="round" stroke-linejoin="round">
-                        </path>
-                        <path
-                            d="M988.017 1041.56V1315.79L913.191 1359.06L753.454 1451.19V1537.55L516.003 1674.75V1314.16L675.746 1221.85L911.752 1085.55L988.017 1041.56Z"
-                            stroke="#17181B" stroke-width="18.0294" stroke-linecap="round" stroke-linejoin="round">
-                        </path>
-                        <path
-                            d="M2408.73 1044.08L2096.46 1224.38L1936.72 1316.69L1773.92 1222.75L1536.29 1085.55L1461.65 1042.46L1621.57 950.15L1696.21 907.06L1933.65 769.856L2408.73 1044.08Z"
-                            fill="#17181B" stroke="#17181B" stroke-width="18.0294" stroke-linecap="round"
-                            stroke-linejoin="round"></path>
-                        <path
-                            d="M1696.23 632.653L1383.96 812.947L1224.03 905.257L1061.23 811.324L748.96 631.03L1221.15 358.425L1696.23 632.653Z"
-                            fill="#17181B" stroke="#17181B" stroke-width="18.0294" stroke-linecap="round"
-                            stroke-linejoin="round"></path>
-                        <path
-                            d="M988.023 1041.56L911.761 1085.55L675.754 1221.85L516.012 1314.16L353.21 1220.05L40.9387 1039.76L512.947 767.333L748.954 903.635L825.218 947.627L988.023 1041.56Z"
-                            fill="#17181B" stroke="#17181B" stroke-width="18.0294" stroke-linecap="round"
-                            stroke-linejoin="round"></path>
-                        <path d="M2408.73 1044.08V1404.67L1936.72 1677.28V1316.69L2096.46 1224.38L2408.73 1044.08Z"
-                            stroke="#17181B" stroke-width="18.0294" stroke-linecap="round" stroke-linejoin="round">
-                        </path>
-                        <path
-                            d="M1700.55 1452.99V1813.58L1228.54 2086.18V1725.59L1388.28 1633.28L1624.47 1496.98L1700.55 1452.99Z"
-                            stroke="#17181B" stroke-width="18.0294" stroke-linecap="round" stroke-linejoin="round">
-                        </path>
-                        <path
-                            d="M1700.55 1452.99L1624.47 1496.98L1388.28 1633.28L1228.54 1725.59L1065.74 1631.48L828.288 1494.46L753.468 1451.19L913.207 1359.06L988.031 1315.79L1149.39 1222.75L1224.03 1179.66L1225.48 1178.76L1300.12 1221.85L1461.66 1315.07L1537.75 1359.06L1700.55 1452.99Z"
-                            fill="#17181B" stroke="#17181B" stroke-width="18.0294" stroke-linecap="round"
-                            stroke-linejoin="round"></path>
-                        <path
-                            d="M1228.54 1725.59V2086.18L753.468 1811.77V1451.19L828.288 1494.46L1065.74 1631.48L1228.54 1725.59Z"
-                            stroke="#17181B" stroke-width="18.0294" stroke-linecap="round" stroke-linejoin="round">
-                        </path>
-                        <path d="M516.012 1314.16V1674.75L40.9387 1400.34V1039.76L353.21 1220.05L516.012 1314.16Z"
-                            stroke="#17181B" stroke-width="18.0294" stroke-linecap="round" stroke-linejoin="round">
-                        </path>
-                        <path
-                            d="M1696.22 632.651V907.059L1621.58 950.149L1461.66 1042.46V1128.64L1300.12 1221.85L1225.47 1178.76L1224.03 1179.66V905.256L1383.95 812.945L1696.22 632.651Z"
-                            stroke="#17181B" stroke-width="18.0294" stroke-linecap="round" stroke-linejoin="round">
-                        </path>
-                        <path
-                            d="M1224.03 905.257V1179.66L1149.39 1222.75L988.03 1129.54V1041.56L825.225 947.626L748.96 903.634V631.029L1061.23 811.323L1224.03 905.257Z"
-                            stroke="#17181B" stroke-width="18.0294" stroke-linecap="round" stroke-linejoin="round">
-                        </path>
-                    </svg>
+                    <img src="{{ asset('favicon.webp') }}" alt="Logo" class="size-8 object-contain rounded">
                     <div>
                         <p class="text-sm font-semibold text-zinc-900 dark:text-zinc-100 leading-tight">
-                            Oxbow UI
+                           Aceno .inc
                         </p>
                         <p class="text-[0.70rem] text-zinc-500 dark:text-zinc-400">
                             Support Console
@@ -165,7 +77,7 @@
                             <path d="M21 21l-6 -6"></path>
                         </svg></span>
                     <input x-model="search" placeholder="Search tickets"
-                        class="w-full h-9 pl-9 pr-3 block w-full h-10 px-4 py-2 text-xs bg-white border border-transparent rounded-lg appearance-none dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 duration-300 ring-1 ring-zinc-200 dark:ring-zinc-700 placeholder-zinc-400 dark:placeholder-zinc-500 focus:border-zinc-300 dark:focus:border-blue-700 focus:bg-transparent focus:outline-none focus:ring-blue-500 focus:ring-offset-2 focus:ring-2 sm:text-sm" />
+                        class="h-9 pl-9 pr-3 block w-full px-4 py-2 text-xs bg-white border border-transparent rounded-lg appearance-none dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 duration-300 ring-1 ring-zinc-200 dark:ring-zinc-700 placeholder-zinc-400 dark:placeholder-zinc-500 focus:border-zinc-300 dark:focus:border-blue-700 focus:bg-transparent focus:outline-none focus:ring-blue-500 focus:ring-offset-2 focus:ring-2 sm:text-sm" />
                 </label>
             </div>
 
@@ -176,13 +88,11 @@
                 </p>
                 <ul class="mt-1 space-y-1">
                     <li>
-                        <button
-                            class="w-full h-9 px-3 rounded-md flex items-center gap-2 text-sm outline outline-1 outline-transparent hover:bg-zinc-50 dark:hover:bg-white/5"
-                            :class="active === 'inbox' ?
-                                'bg-white text-zinc-900 dark:bg-white/10 dark:text-white outline-white/10' :
-                                'text-zinc-700 dark:text-zinc-300'"
+                        <a href="{{ route('admin.kyc.pending') }}" wire:navigate
+                            class="w-full h-9 px-3 rounded-md flex items-center gap-2 text-sm outline-1 outline-transparent hover:bg-zinc-50 dark:hover:bg-white/5 {{ request()->routeIs('admin.kyc.pending') ? 'bg-white text-zinc-900 dark:bg-white/10 dark:text-white outline-white/10' :
+                                'text-zinc-700 dark:text-zinc-300'  }}"
                             @click="active='inbox'">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                            {{-- <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
                                 stroke="currentColor" stroke-width="2" stroke-linecap="round"
                                 stroke-linejoin="round" class="icon icon-tabler-arrow-mail size-4">
                                 <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
@@ -190,15 +100,16 @@
                                     d="M3 7a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-10z">
                                 </path>
                                 <path d="M3 7l9 6l9 -6"></path>
-                            </svg>
-                            <span>Inbox</span>
+                            </svg> --}}
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="size-4 icon icon-tabler icons-tabler-outline icon-tabler-user-scan"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M10 9a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" /><path d="M4 8v-2a2 2 0 0 1 2 -2h2" /><path d="M4 16v2a2 2 0 0 0 2 2h2" /><path d="M16 4h2a2 2 0 0 1 2 2v2" /><path d="M16 20h2a2 2 0 0 0 2 -2v-2" /><path d="M8 16a2 2 0 0 1 2 -2h4a2 2 0 0 1 2 2" /></svg>
+                            <span>Kyc Requests</span>
                             <span
-                                class="ml-auto text-[0.70rem] px-1.5 py-0.5 rounded bg-white text-zinc-900 outline outline-1 outline-zinc-200 dark:bg-white/10 dark:text-white dark:outline-white/10">10</span>
-                        </button>
+                                class="ml-auto text-[0.70rem] px-1.5 py-0.5 rounded bg-white text-zinc-900 outline-1 outline-zinc-200 dark:bg-white/10 dark:text-white dark:outline-white/10">10</span>
+                        </a>
                     </li>
                     <li>
-                        <button
-                            class="w-full h-9 px-3 rounded-md flex items-center gap-2 text-sm outline outline-1 outline-transparent hover:bg-zinc-50 dark:hover:bg-white/5"
+                        <a href="{{ route('admin.dashboard') }}" wire:navigate
+                            class="w-full h-9 px-3 rounded-md flex items-center gap-2 text-sm outline-1 outline-transparent hover:bg-zinc-50 dark:hover:bg-white/5"
                             :class="active === 'dashboard' ?
                                 'bg-white text-zinc-900 dark:bg-white/10 dark:text-white outline-white/10' :
                                 'text-zinc-700 dark:text-zinc-300'"
@@ -212,7 +123,7 @@
                                 <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6"></path>
                             </svg>
                             <span>Dashboard</span>
-                        </button>
+                        </a>
                     </li>
                 </ul>
                 <div class="pt-3 mt-3 border-t border-zinc-100 dark:border-zinc-800">
@@ -397,10 +308,9 @@
                             <span class="flex items-center gap-3">
                                 <img src="https://cdn.devdojo.com/images/may2023/adam.jpeg" alt="Avatar" class="size-8 rounded-full" />
                                 <span class="text-left">
-                                    <span class="block text-sm font-medium text-zinc-900 dark:text-zinc-100">Ricardo
-                                        S.</span>
+                                    <span class="block text-sm font-medium text-zinc-900 dark:text-zinc-100">{{ auth('admin')->user()->name }}</span>
                                     <span
-                                        class="block text-xs text-zinc-500 dark:text-zinc-400">ricardo@oxbowui.com</span>
+                                        class="block text-xs text-zinc-500 dark:text-zinc-400">{{ auth('admin')->user()->email }}</span>
                                 </span>
                             </span>
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"

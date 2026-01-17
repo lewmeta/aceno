@@ -17,18 +17,20 @@
     @livewireStyles
 </head>
 
-<body class="font-sans antialiased">
-    <div class="min-h-screen w-full bg-gray-100 dark:bg-zinc-900">
+<body class="h-screen overflow-hidden font-sans antialiased">
+    <div class="w-full bg-gray-100 dark:bg-zinc-900">
         <div class="block w-full lg:flex">
             <!-- Sidebar navigation -->
             <livewire:admin.layout.sidebar />
 
             <!-- Page Content -->
-            <main class="w-full">
+            <main class="w-full overflow-scroll">
                 <!-- Navigation -->
                 <livewire:admin.layout.header />
                 
-                {{ $slot }}
+                <div class="bg-red-600! min-h-screen overflow-scroll">
+                    {{ $slot }}
+                </div>
             </main>
 
         </div>
